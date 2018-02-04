@@ -56,11 +56,12 @@ table {
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+:--headings {
     font-family: 'Comfortaa', cursive;
     font-weight: 700;
-    line-height: 125%;
     color: var(--headline);
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 h1 {
