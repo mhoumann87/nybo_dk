@@ -21,12 +21,12 @@
         <nav id="nav" role="navigation">
             <input class="menu-btn" type="checkbox" id="menu-btn">
             <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-            <ul class="menubar">
-                <li><a href="forside.php">Forside</a></li>
-                <li><a href="foto.php">Fotografi</a></li>
-                <li><a href="nyheder.php">Nyheder</a></li>
-                <li><a href="kontakt.php">Kontakt</a></li>
-            </ul>
+            <div class="menubar">
+                <div class="menu-item"><a href="forside.php">Forside</a></div>
+                <div class="menu-item"><a href="foto.php">Fotografi</a></div>
+                <div class="menu-item"><a href="nyheder.php">Nyheder</a></div>
+                <div class="menu-item"><a href="kontakt.php">Kontakt</a></div>
+            </div>
         </nav>
     </div>
 </header>
