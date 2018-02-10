@@ -89,7 +89,7 @@ h6 {
 }
 
 
-p {
+p, a:any-link {
     font-family: 'Poppins', sans-serif;
     line-height: 100%;
     color: var(--paragraph);

@@ -1,37 +1,24 @@
 nav {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    align-items: center;
+    align-items: flex-end;
     font-size: 110%;
 }
 
-nav a {
-    display: none;
+.menu-item {
+    padding: 20px 28px;
+    border-top: var(--headline) 1px solid;
+    border-left: var(--headline) 1px solid;
+    border-right: var(--headline) 1px solid;
+    text-align: center;
 }
 
-nav a:any-link {
-    text-decoration: none;
-    color: var(--headline);
- }
-
-nav a:active {
-    color: var(--paragraph);
+.menu-item:last-child {
+    border-bottom: var(--headline) 1px solid;
 }
 
-nav li {
-    padding: 5px;
-    position: relative;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: hidden;
-}
-
-nav .menubar {
+nav .menu {
+    max-height: 0;
     transition: max-height .2s ease-out;
 }
 
@@ -53,7 +40,7 @@ nav .menu-icon .navicon {
 }
 
 nav .menu-icon .navicon:before,
-nav .menu-icon.navicon:after {
+nav .menu-icon .navicon:after {
     background: var(--headline);
     content: '';
     display: block;
@@ -94,4 +81,27 @@ nav .menu-btn:checked ~ .menu-icon .navicon:after {
 nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
+}
+
+.noshow {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+nav a:link, nav a:visited, nav a:active {
+    color: var(--paragraph);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--headline);
+    text-decoration: underline;
+}
+
+nav .active a:any-link {
+    color: var(--headline);
+    text-decoration: underline;
 }

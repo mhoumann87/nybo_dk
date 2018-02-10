@@ -154,5 +154,7 @@ $RECYCLE.BIN/
 
 production/includes/database-config.inc.php
 
+.menubar_menufirst
+
 
 # End of https://www.gitignore.io/api/node,windows,jetbrains

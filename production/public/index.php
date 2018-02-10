@@ -15,14 +15,14 @@
 <header>
     <div class="logo" role="logo">
         <a href="forside.php"><img src="./images/nybo_logo.svg" class="logo_head" alt="Theis Nybo Foto logo"></a>
-        <h1 class="noshow">Theis Nybo Fotografi</h1>
+        <h1 class="usynlig">Theis Nybo Fotografi</h1>
     </div>
     <div class="menu">
         <nav id="nav" role="navigation">
             <input class="menu-btn" type="checkbox" id="menu-btn">
             <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-            <div class="menubar">
-                <div class="menu-item"><a href="forside.php">Forside</a></div>
+            <div id="show" class="menubar noshow">
+                <div class="menu-item active"><a href="forside.php">Forside</a></div>
                 <div class="menu-item"><a href="foto.php">Fotografi</a></div>
                 <div class="menu-item"><a href="nyheder.php">Nyheder</a></div>
                 <div class="menu-item"><a href="kontakt.php">Kontakt</a></div>
@@ -32,6 +32,6 @@
 </header>
 
 
-<script src="javascript"></script>
+<script src="javascript/javascript.js"></script>
 </body>
 </html>

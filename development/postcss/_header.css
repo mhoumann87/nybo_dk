@@ -1,7 +1,6 @@
 header {
     display: flex;
     width: 100vw;
-    height: 10vh;
     padding: 10px;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -10,8 +9,12 @@ header {
     border-bottom: 3px var(--headline) solid;
 }
 
-.noshow {
+.usynlig {
     display: none;
+}
+
+.show {
+    display: block;
 }
     .logo {
         width: 50%;
@@ -20,7 +23,6 @@ header {
     .logo_head {
         width: auto;
         height: 8vh;
-
     }
 
 

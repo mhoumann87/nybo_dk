@@ -101,7 +101,7 @@ h6 {
     font-size: 120%;
 }
 
-p {
+p, a:link, a:visited {
     font-family: 'Poppins', sans-serif;
     line-height: 100%;
     color: #FFFFE8;
@@ -118,7 +118,6 @@ header {
     display: -ms-flexbox;
     display: flex;
     width: 100vw;
-    height: 10vh;
     padding: 10px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -135,8 +134,12 @@ header {
     border-bottom: 3px #DF0000 solid;
 }
 
-.noshow {
+.usynlig {
     display: none;
+}
+
+.show {
+    display: block;
 }
 
 .logo {
@@ -146,7 +149,6 @@ header {
 .logo_head {
         width: auto;
         height: 8vh;
-
     }
 
 nav {
@@ -157,39 +159,26 @@ nav {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    width: 100%;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
     font-size: 110%;
 }
 
-nav a {
-    display: none;
+.menu-item {
+    padding: 20px 28px;
+    border-top: #DF0000 1px solid;
+    border-left: #DF0000 1px solid;
+    border-right: #DF0000 1px solid;
+    text-align: center;
 }
 
-nav a:link,nav a:visited {
-    text-decoration: none;
-    color: #DF0000;
- }
-
-nav a:active {
-    color: #FFFFE8;
+.menu-item:last-child {
+    border-bottom: #DF0000 1px solid;
 }
 
-nav li {
-    padding: 5px;
-    position: relative;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: hidden;
-}
-
-nav .menubar {
+nav .menu {
+    max-height: 0;
     -webkit-transition: max-height .2s ease-out;
     transition: max-height .2s ease-out;
 }
@@ -216,7 +205,7 @@ nav .menu-icon .navicon {
 }
 
 nav .menu-icon .navicon:before,
-nav .menu-icon.navicon:after {
+nav .menu-icon .navicon:after {
     background: #DF0000;
     content: '';
     display: block;
@@ -260,5 +249,28 @@ nav .menu-btn:checked ~ .menu-icon .navicon:after {
 nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
+}
+
+.noshow {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+nav a:link, nav a:visited, nav a:active {
+    color: #FFFFE8;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #DF0000;
+    text-decoration: underline;
+}
+
+nav .active a:link,nav .active a:visited {
+    color: #DF0000;
+    text-decoration: underline;
 }
 /*# sourceMappingURL=style.css.map */
