@@ -1,0 +1,31 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, var(--background), var(--paragraph));
+}
+
+
+.copyright {
+    font-size: 10px;
+    text-align: center;
+    padding:10px;
+}
+
+.foot-kontakt {
+    text-align: center;
+    padding: 10px;
+}
+
+.foot-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    font-size: 250%;
+}
+
+footer .foot-social .soc-icon a:any-link {
+    color: var(--headline);
+}
+
+

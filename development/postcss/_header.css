@@ -2,11 +2,15 @@ header {
     display: flex;
     width: 100vw;
     padding: 10px;
+    margin: 0;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px var(--headline) solid;
+    background: linear-gradient(to bottom, var(--paragraph), var(--background));
+    position: fixed;
+    top: 0;
 }
 
 .usynlig {

@@ -17,6 +17,7 @@
     <meta name="description" content="Dette er det oficielle online portfolio for fotograf Theis Nybo.">
     <title><?php echo($title); ?></title>
     <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
