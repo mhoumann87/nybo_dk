@@ -1,6 +1,6 @@
-<?php
-$title = "Theis Nybo Foto - Forside";
-$side = 'index';
+<<?php
+$title = "Theis Nybo Foto - Fotografi";
+$side = 'foto';
 require_once ('./../includes/header.inc.php');
 ?>
 
