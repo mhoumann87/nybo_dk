@@ -6,6 +6,10 @@ require_once ('./../includes/header.inc.php');
 
 <main>
 
+    <div class="to-col-grid">
+
+    </div>
+
 
 </main>
 
