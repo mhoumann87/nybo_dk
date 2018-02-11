@@ -3,10 +3,29 @@ const   gulp = require('gulp'),
         cssnext = require('postcss-cssnext'),
         gutil = require('gulp-util'),
         sourcemaps = require('gulp-sourcemaps'),
+        concat = require('gulp-concat'),
+        browserify = require('gulp-browserify'),
+        uglify = require('gulp-uglify'),
+        babel = require('gulp-babel'),
 
         source = 'development/',
-        dest = 'production/public/';
+        dest = 'production/public/',
+        jsSources = [
+            source + 'javascript/onLoad.js',
+            source + 'javascript/menubar.js'
+        ];
 
+gulp.task('js', function() {
+   gulp.src(jsSources)
+       .pipe(concat('javascript.js'))
+       .pipe(browserify())
+       .pipe(babel({
+           presets: ['es2015']
+       }))
+       .pipe(uglify())
+       .on('error', gutil.log)
+       .pipe(gulp.dest(dest + 'javascript/'))
+});
 
 gulp.task('css', function() {
     gulp.src(source + 'postcss/style.css')
@@ -25,5 +44,5 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('default', ['css','watch']);
+gulp.task('default', ['css', 'js', 'watch']);
 

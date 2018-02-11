@@ -325,4 +325,8 @@ main {
     width: 100%;
     margin-top: 100px;
 }
+
+.to-col-grid {
+    display: grid;
+}
 /*# sourceMappingURL=style.css.map */

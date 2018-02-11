@@ -8,6 +8,19 @@ require_once ('./../includes/header.inc.php');
 
     <div class="to-col-grid">
 
+        <section class="kontakt_form">
+
+
+        </section>
+
+        <section class="kontakt_info">
+            <h3>Kontakt mig:</h3>
+
+            <form class="kontakt-form" id="kontakt" name="kontakt" method="post" action="kontakt.php">
+
+            </form>
+
+        </section>
     </div>
 
 

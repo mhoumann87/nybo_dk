@@ -1,7 +1,3 @@
-window.onload = function() {
-    checked();
-};
-
 function checked() {
     const CLICK = document.getElementById('menu-btn');
     const SHOW = document.getElementById('show');
