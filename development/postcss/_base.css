@@ -90,10 +90,21 @@ h6 {
 }
 
 
-p, a:any-link {
+body {
     font-family: 'Poppins', sans-serif;
     line-height: 100%;
     color: var(--paragraph);
+}
+
+a:any-link {
+    color: var(--paragraph);
+
+}
+
+a:hover {
+    color: var(--headline);
+    transition: color .3s ease-in;
+
 }
 
 body {

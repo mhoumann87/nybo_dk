@@ -19,11 +19,15 @@
     <div class="foot-social">
 
         <div class="soc-icon">
-            <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/TheisNyboPhotography" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
         </div>
 
         <div class="soc-icon">
-            <a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/theisnybo/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="soc-icon">
+            <a href="https://dk.linkedin.com/in/theis-nybo-8167033b" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
         </div>
 
         <div class="soc-icon">

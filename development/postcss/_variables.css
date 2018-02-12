@@ -2,6 +2,7 @@
     --paragraph: #FFFFE8;
     --background: #0D0D0D;
     --headline: #DF0000;
+    --success: #137506;
 }
 
 @custom-selector :--headings  h1, h2, h3, h4, h5, h6;
