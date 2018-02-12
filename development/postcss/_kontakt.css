@@ -1,0 +1,75 @@
+.meddelse {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.kontakt_form {
+    color: var(--paragraph);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+.textfelt {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.textboks {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.form_item {
+    text-align: left;
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+
+
+.sendknap {
+    padding:  10px 20px;
+    display: block;
+    margin-right: 0 !important;
+    margin-left: auto !important;
+    font-family: inherit;
+    color: var(--paragraph);
+    background-color: var(--success);
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 5px #1F1F1F;
+}
+
+.sendknap:active {
+    box-shadow: 0 2px #383838;
+    transform: translateY(3px);
+}
+
+.kontakt_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.kontakt-soc {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.kontakt-icon {
+    font-size: 2.5rem;
+}
+
