@@ -394,6 +394,8 @@ main {
 
 .textboks {
     width: 100%;
+    height: 160px;
+    height: 10rem;
     padding: 5px;
     border-radius: 5px;
     font-family: inherit;

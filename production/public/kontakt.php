@@ -30,7 +30,7 @@ require_once ('./../includes/header.inc.php');
                     <textarea id="besked" name="besked" placeholder="Indtast din besked" class="textboks"></textarea><br/>
                 </div>
                 <div class="form_item">
-                    <button name="submit" class="sendknap" onClick="sendKontakt();">Send din besked</button>
+                    <button name="submit" class="sendknap" id="sendKontakt">Send din besked</button>
                 </div>
 
             </div>

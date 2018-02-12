@@ -12,7 +12,8 @@ const   gulp = require('gulp'),
         dest = 'production/public/',
         jsSources = [
             source + 'javascript/onLoad.js',
-            source + 'javascript/menubar.js'
+            source + 'javascript/menubar.js',
+            source + 'javascript/contact.js'
         ];
 
 gulp.task('js', function() {
@@ -22,7 +23,7 @@ gulp.task('js', function() {
        .pipe(babel({
            presets: ['es2015']
        }))
-       .pipe(uglify())
+       //.pipe(uglify())
        .on('error', gutil.log)
        .pipe(gulp.dest(dest + 'javascript/'))
 });
