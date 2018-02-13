@@ -1,7 +1,7 @@
 <?php
 $title = "Theis Nybo Foto - Forside";
 $side = 'index';
-require_once ('./../includes/header.inc.php');
+require_once('./../private/shared/header.inc.php');
 ?>
 
 <main>
@@ -12,6 +12,6 @@ require_once ('./../includes/header.inc.php');
 
 <?php
 
-require_once ('./../includes/footer.inc.php')
+require_once('./../private/shared/footer.inc.php')
 
 ?>

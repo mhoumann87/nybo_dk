@@ -110,3 +110,8 @@ a:hover {
 body {
     background-color: var(--background);
 }
+
+main {
+    width: 100%;
+    padding: 10px;
+}
