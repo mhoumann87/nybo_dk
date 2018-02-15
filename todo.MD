@@ -1,0 +1,3 @@
+[] active effect on buttons
+[] slide down effect on top menu
+[] slide in effect on side menus
