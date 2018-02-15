@@ -1,6 +1,7 @@
 <<?php
 $title = "Theis Nybo Foto - Nyheder";
 $side = 'nyheder';
+require_once ('./../private/initialize.inc.php');
 require_once('./../private/shared/header.inc.php');
 ?>
 

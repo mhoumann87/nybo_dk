@@ -6,7 +6,9 @@
  * Time: 14:56
  */
 
-define($DB_USER = 'nybo_user');
-define($DB_HOST = 'localhost');
-define($DB_PASS = 'kode1234');
-define($DB_NAME = 'nybo_dk');
+define('DB_USER´',  'nybo_user');
+define('DB_HOST', 'localhost');
+define('DB_PASS', 'kode1234');
+define('DB_NAME', 'nybo_dk');
+
+?>

@@ -1,12 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Michael
- * Date: 10-02-2018
- * Time: 14:24
- */
+    if(!isset($title)) { $title = 'Admin'; }
+    if(!isset($side)) { $side = ""; }
 
 ?>
+
 <!doctype html>
 <html lang="da">
 <head>
