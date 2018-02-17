@@ -544,7 +544,12 @@ main {
 
 .error {
     font-weight: bold;
-    color: #FFFFE8;
+    color: #DF0000;
+}
+
+.error_border {
+    border: 2px #DF0000 solid;
+    background-color: #DF0000;
 }
 
 /*# sourceMappingURL=style.css.map */

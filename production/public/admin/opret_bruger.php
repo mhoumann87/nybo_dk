@@ -1,8 +1,8 @@
 <?php
 require_once ('./../../private/initialize.inc.php');
 
-$page = 'login';
-$title = 'Theis Nybo Foto - Login';
+$side = 'bruger';
+$title = 'Theis Nybo Foto - Opret bruger';
 
 require_once (SHARED_PATH.'/admin_header.inc.php');
 
@@ -14,12 +14,16 @@ $mail_place = 'Indtast din email';
 $pass_status = '';
 $pass_error =  '';
 $pass_border = '';
+$pass2_status = '';
+$pass2_error =  '';
+$pass2_border = '';
 
 
 if(is_post_request()) {
 
     $email = $_POST['email'];
     $pass = $_POST['pass'];
+    $pass2 = $_POST['pass2'];
 
     if (!is_filled($email)) {
         $mail_border = 'error_border';
@@ -39,6 +43,20 @@ if(is_post_request()) {
         $pass_status = 'error';
         $pass_error = ' - Password skal udfyldes';
         $error = 1;
+    } else if(!is_filled($pass2)) {
+        $mail_place = $email;
+        $pass2_border = 'error_border';
+        $pass2_status = 'error';
+        $pass2_error = ' - Feltet skal udfyldes';
+        $error = 1;
+    } else if($pass !== $pass2) {
+        $mail_place = $email;
+        $pass_border = 'error_border';
+        $pass_status = 'error';
+        $pass_error = ' - Passwords skal være ens';
+        $pass2_border = 'error_border';
+        $pass2_status = 'error';
+        $pass2_error = ' - Passwords skal være ens';
     }
 
     if (empty($error)) {
@@ -55,7 +73,7 @@ if(is_post_request()) {
 
         <section class="login_box">
 
-            <form name="login" class="login_form" action="<?php echo url_for('/admin/login.php'); ?>" method="post">
+            <form name="login" class="login_form" action="<?php echo url_for('/admin/opret_bruger.php'); ?>" method="post">
 
                 <div class="form_item">
                     <label for="email" class="formnavn <?php echo $mail_status; ?>">E-mail</label><span class="<?php echo $mail_status; ?>"><?php echo $mail_error; ?></span><br>
@@ -67,23 +85,19 @@ if(is_post_request()) {
                     <input type="password" name="pass" class="textfelt <?php echo $pass_border; ?>" placeholder="Indtast dit password">
                 </div>
 
+                <div class="form_item">
+                    <label for="pass2" class="formnavn <?php echo $pass_status; ?>">Gentag password</label><span class="<?php echo $pass2_status; ?>"><?php echo $pass2_error; ?></span><br>
+                    <input type="password" name="pass2" class="textfelt <?php echo $pass_border; ?>" placeholder="Gentag dit password">
+                </div>
+
                 <div class="">
-                    <input type="submit" name="submit" class="loginknap" value="Login">
+                    <input type="submit" name="submit" class="loginknap" value="Opret">
                 </div>
                 <span class="error"><?php echo $message ?? ''; ?></span>
             </form>
 
         </section>
 
-        <?php
-
-
-
-        ?>
-
-
     </main>
-
-
 
 <?php require_once (SHARED_PATH.'/admin_footer.inc.php'); ?>

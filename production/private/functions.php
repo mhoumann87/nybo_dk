@@ -1,21 +1,35 @@
 <?php
-//require_once ('database-config.inc.php');
 
+
+// Redirecting
 function redirect($nyside) {
     header('Location: '.$nyside);
     exit;
 }
 
-/*function db_connect() {
-    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    return $conn;
+//Site neutral URLs
+function url_for($script_path) {
+    // if the leading '/' is forgotten, add it
+    if ($script_path[0] != '/') {
+        $script_path = '/'.$script_path;
+    }
+    return WWW_ROOT.$script_path;
 }
 
-function db_disconnect($conn) {
-    if (isset($conn)) {
-        mysqli_close($conn);
-    }
-}*/
+// Functions for working with HTML
+
+function u($string ="") {
+    return urlencode($string);
+}
+
+function raw_u($string ="") {
+    return rawurlencode($string);
+}
+
+function h($string ="") {
+    return htmlspecialchars($string);
+}
+
 
 function is_post_request() {
     return $_SERVER['REQUEST_METHOD'] == 'POST';

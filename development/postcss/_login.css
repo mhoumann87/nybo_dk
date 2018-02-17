@@ -19,5 +19,10 @@
 
 .error {
     font-weight: bold;
-    color: var(--paragraph);
+    color: var(--headline);
+}
+
+.error_border {
+    border: 2px var(--headline) solid;
+    background-color: var(--headline);
 }
