@@ -30,7 +30,7 @@ function h($string ="") {
     return htmlspecialchars($string);
 }
 
-
+// Control of method
 function is_post_request() {
     return $_SERVER['REQUEST_METHOD'] == 'POST';
 }
@@ -38,3 +38,11 @@ function is_post_request() {
 function is_get_requiest() {
     return $_SERVER['REQUEST_METHOD'] == 'GET';
 }
+
+// Clean inout for use in SQL
+
+function clean_input($connection, $string) {
+   return mysqli_real_escape_string($connection, $string);
+}
+
+

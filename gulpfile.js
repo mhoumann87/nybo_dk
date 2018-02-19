@@ -33,6 +33,7 @@ gulp.task('css', function() {
         .pipe(sourcemaps.init())
         .pipe(postcss([
             require('postcss-partial-import')({prefix: '_', extension: '.css'}),
+            require('postcss-nesting'),
             cssnext()
         ]))
         .on('error', gutil.log)

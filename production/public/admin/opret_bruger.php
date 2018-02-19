@@ -6,98 +6,128 @@ $title = 'Theis Nybo Foto - Opret bruger';
 
 require_once (SHARED_PATH.'/admin_header.inc.php');
 
-$error = [];
-$mail_status = '';
-$mail_error =  '';
-$mail_border = '';
-$mail_place = 'Indtast din email';
-$pass_status = '';
-$pass_error =  '';
-$pass_border = '';
-$pass2_status = '';
-$pass2_error =  '';
-$pass2_border = '';
+if (is_post_request()) {
+
+    $firstname = trim(clean_input($db, $_POST['firstname']));
+    $lastname = trim(clean_input($db, $_POST['lastname']));
+    $email = trim(clean_input($db, $_POST['email']));
+    $pass = 'Kode1234';
+    $hashed_password = password_hash(trim(clean_input($db, $pass)), PASSWORD_BCRYPT);
+    $dato = time();
 
 
-if(is_post_request()) {
 
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
-    $pass2 = $_POST['pass2'];
 
-    if (!is_filled($email)) {
-        $mail_border = 'error_border';
-        $mail_status = 'error';
-        $mail_error = ' - Email skal udfyldes';
-        $error = 1;
-    }
-    else if (!valid_email($email)) {
-        $mail_place = $email;
-        $mail_border = 'error_border';
-        $mail_status = 'error';
-        $mail_error = ' - Dette er ikke en valid email adresse';
-        $error = 1;
-    } else if (!is_filled($pass)) {
-        $mail_place = $email;
-        $pass_border = 'error_border';
-        $pass_status = 'error';
-        $pass_error = ' - Password skal udfyldes';
-        $error = 1;
-    } else if(!is_filled($pass2)) {
-        $mail_place = $email;
-        $pass2_border = 'error_border';
-        $pass2_status = 'error';
-        $pass2_error = ' - Feltet skal udfyldes';
-        $error = 1;
-    } else if($pass !== $pass2) {
-        $mail_place = $email;
-        $pass_border = 'error_border';
-        $pass_status = 'error';
-        $pass_error = ' - Passwords skal være ens';
-        $pass2_border = 'error_border';
-        $pass2_status = 'error';
-        $pass2_error = ' - Passwords skal være ens';
+
+    if (!is_filled($firstname)) {
+        $errors['firstname'] = ' - Fornavn skal udfyldes';
+    } else if (!only_letters($firstname)) {
+        $errors['firstname'] = ' - Fornavn må kun indholde bogstaver';
+    } else if(!is_filled($lastname)) {
+        $errors['lastname'] = ' - Efternavn skal udfyldes';
+    } else if(!only_letters($lastname)) {
+        $errors['lastname'] = ' - Efternavn må kun indholde bogstaver';
+    } else if(!is_filled($email)) {
+        $errors['$email'] = ' - Email skal udfyldes';
+    } else if(!valid_email($email)) {
+        $errors['email'] = ' - Dette er ikke en valid email';
+    } else if (admin_exist($email) !== 0) {
+        $errors['email'] = " - Email er allerede i databasen";
     }
 
-    if (empty($error)) {
-        $message = 'ok';
-    } else {
-        $message = "Ret fejl";
+    if (empty($errors)) {
+
+        $sql = "INSERT INTO admins ";
+        $sql .= "(admin_firstname, admin_lastname, admin_mail, admin_created, admin_changed, admin_password) ";
+        $sql .= "VALUES (";
+        $sql .= "'".$firstname."',";
+        $sql .= "'".$lastname."',";
+        $sql .= "'".$email."',";
+        $sql .= "'".$dato."',";
+        $sql .= "'".$dato."',";
+        $sql .= "'".$hashed_password."')";
+
+        if (create_post($sql)) {
+            redirect(url_for('/admin/opret_bruger.php'));
+        } else {
+            $msg = "Der opstod en fejl, prøv igen";
+        }
+
     }
 
-}
+
+}//Post_request
 
 ?>
 
-    <main>
+<main>
+    <section class="login_box">
+    <h4>Brugere i dataabasen</h4>
 
-        <section class="login_box">
+    <table class="admin_tabel">
 
-            <form name="login" class="login_form" action="<?php echo url_for('/admin/opret_bruger.php'); ?>" method="post">
+        <tr>
+            <th>Fornavn</th>
+            <th>Efternavn</th>
+            <th>Email</th>
+            <th>Skift Password</th>
+            <th>Slet Bruger</th>
+        </tr>
+        <?php
 
-                <div class="form_item">
-                    <label for="email" class="formnavn <?php echo $mail_status; ?>">E-mail</label><span class="<?php echo $mail_status; ?>"><?php echo $mail_error; ?></span><br>
-                    <input type="text" name="email" class="textfelt <?php echo $mail_border; ?>" placeholder="<?php echo $mail_place; ?>">
-                </div>
+        $admin_set = find_all_admins();
 
-                <div class="form_item">
-                    <label for="pass" class="formnavn <?php echo $pass_status; ?>">Password</label><span class="<?php echo $pass_status; ?>"><?php echo $pass_error; ?></span><br>
-                    <input type="password" name="pass" class="textfelt <?php echo $pass_border; ?>" placeholder="Indtast dit password">
-                </div>
+        while($admin = mysqli_fetch_assoc($admin_set)) { ?>
+            <tr>
+                <td><?php echo h($admin['admin_firstname']); ?></td>
+                <td><?php echo h($admin['admin_lastname']); ?></td>
+                <td><?php echo h($admin['admin_mail']); ?></td>
+                <td><a href="<?php echo url_for('/admin/skift_password.php');?>?id=<?php echo h($admin['admin_id']);?>">Skift Password</a></td>
+                <td><a href="<?php echo url_for('/admin/slet_bruger.php');?>?id=<?php echo h($admin['admin_id']);?>">Slet Bruger</a></td>
+            </tr>
+            <?php }?>
+    </table>
 
-                <div class="form_item">
-                    <label for="pass2" class="formnavn <?php echo $pass_status; ?>">Gentag password</label><span class="<?php echo $pass2_status; ?>"><?php echo $pass2_error; ?></span><br>
-                    <input type="password" name="pass2" class="textfelt <?php echo $pass_border; ?>" placeholder="Gentag dit password">
-                </div>
+    </section>
 
-                <div class="">
-                    <input type="submit" name="submit" class="loginknap" value="Opret">
-                </div>
-                <span class="error"><?php echo $message ?? ''; ?></span>
-            </form>
+    <section class="login_box">
+        <h4>Opret ny bruger</h4>
+        <p class="space-under">Når der oprettes en bruger, vil password automatisk blive sat til Kode1234. Første gang brugeren logger ind, vil vedkommende blive bedt om at ændre det.</p>
+        <form name="login" class="login_form" action="" method="post">
 
-        </section>
+        <div class="form_item">
+            <label for="firstname" class="formnavn<?php if(isset($errors['firstname'])) {echo ' error';} ?>">Fornavn</label><span class="error"><?php echo $errors['firstname'] ?? ''; ?></span><br>
+            <input type="text" name="firstname" class="textfelt<?php if(isset($errors['firstname'])) {echo ' error_border';} ?>" placeholder="Indtast fornavn" value="<?php echo $firstname ?? '';?>">
+        </div>
 
-    </main>
+        <div class="form_item">
+            <label for="lastname" class="formnavn<?php if(isset($errors['lastname'])) {echo ' error';} ?>">Efternavn</label><span class="error"><?php echo $errors['lastname'] ?? ''; ?></span><br>
+            <input type="text" name="lastname" class="textfelt<?php if(isset($errors['lastname'])) {echo ' error_border';} ?>" placeholder="Indtast efternavn" value="<?php echo $lastname ?? '';?>">
+        </div>
+
+        <div class="form_item">
+            <label for="email" class="formnavn<?php if(isset($errors['lastname'])) {echo ' error';} ?>">Email</label><span class="error"><?php echo $errors['email'] ?? ''; ?></span><br>
+            <input type="text" name="email" class="textfelt<?php if(isset($errors['lastname'])) {echo ' error_border';} ?>" placeholder="Indtast email" value="<?php echo $email ?? '';?>">
+        </div>
+
+        <div>
+            <input type="submit" name="submit" class="loginknap" value="Opret bruger">
+        </div>
+
+            <p class="error"><?php echo $msg ?? ''; ?></p>
+            <p class="error"><?php if(!empty($errors)) {
+                echo '<h6>Ret disse fejl:</h6>';
+                echo '<ul>';
+                foreach ($errors as $error) {
+                    echo '<li>'.h($error).'</li>';
+                }
+                echo '</ul>';
+                } ?></p>
+
+
+    </form>
+
+    </section>
+
 
 <?php require_once (SHARED_PATH.'/admin_footer.inc.php'); ?>

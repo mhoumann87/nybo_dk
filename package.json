@@ -36,6 +36,7 @@
     "gulp-util": "^3.0.8",
     "jquery": "^3.3.1",
     "postcss-cssnext": "^3.1.0",
+    "postcss-nesting": "^4.2.1",
     "postcss-partial-import": "^4.1.0"
   }
 }

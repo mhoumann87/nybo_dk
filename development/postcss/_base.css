@@ -111,3 +111,7 @@ body {
     background-color: var(--background);
 }
 
+.space-under {
+    margin-bottom: 2rem;
+}
+

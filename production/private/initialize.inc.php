@@ -1,6 +1,8 @@
 <?php
 ob_start(); //output buffering is turned on
 
+session_start(); // turn on sessions
+
 //Paths to the folder structure as constants
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
@@ -16,7 +18,10 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
 define('WWW_ROOT', $doc_root);
 
 require_once ('functions.php');
+require_once ('db_query_functions.php');
 require_once ('validation.php');
 require_once ('database.php');
+require_once ('auth_functions.php');
 
 $db = db_connect();
+$errors = [];

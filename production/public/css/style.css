@@ -124,6 +124,11 @@ body {
     background-color: #0D0D0D;
 }
 
+.space-under {
+    margin-bottom: 32px;
+    margin-bottom: 2rem;
+}
+
 /* /root */
 
 header {
@@ -532,6 +537,8 @@ main {
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    margin-bottom: 32px;
+    margin-bottom: 2rem;
 }
 
 .loginknap:active {
@@ -549,6 +556,25 @@ main {
 
 .error_border {
     border: 2px #DF0000 solid;
+    background-color: rgba(223, 0, 0, .5);
+    color: #FFFFE8;
+}
+
+.login_box {
+    padding: 16px;
+    padding: 1rem;
+    margin-bottom: 32px;
+    margin-bottom: 2rem
+
+}
+
+.login_box tabel, .login_box th, .login_box tr, .login_box td  {
+    padding: 16px;
+    padding: 1rem;
+    border: 1px solid #DF0000;
+}
+
+.login_box th {
     background-color: #DF0000;
 }
 

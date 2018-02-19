@@ -8,6 +8,7 @@
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .loginknap:active {
@@ -24,5 +25,21 @@
 
 .error_border {
     border: 2px var(--headline) solid;
+    background-color: var(--opeq_red);
+    color: var(--paragraph);
+}
+
+.login_box {
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+ & tabel, & th, & tr, & td  {
+    padding: 1rem;
+    border: 1px solid var(--headline);
+}
+
+ & th {
     background-color: var(--headline);
+   }
+
 }

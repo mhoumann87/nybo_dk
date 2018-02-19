@@ -25,7 +25,12 @@ function valid_email($value) {
     return preg_match($email_regex, $value) === 1;
 }
 
+//check input is only letters with danish letters too
 
+function only_letters($value) {
+    $letter_regex = "/^[a-zA-ZÆØÅæøå]+$/i";
+    return preg_match($letter_regex, $value);
+}
 
 
 

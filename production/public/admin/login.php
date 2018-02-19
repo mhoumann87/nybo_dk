@@ -6,45 +6,39 @@ $title = 'Theis Nybo Foto - Login';
 
 require_once (SHARED_PATH.'/admin_header.inc.php');
 
-$error = [];
-$mail_status = '';
-$mail_error =  '';
-$mail_border = '';
-$mail_place = 'Indtast din email';
-$pass_status = '';
-$pass_error =  '';
-$pass_border = '';
-
 
 if(is_post_request()) {
 
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
+    $email = trim(clean_input($db, $_POST['email']));
+    $pass = trim(clean_input($db, $_POST['pass']));
 
     if (!is_filled($email)) {
-        $mail_border = 'error_border';
-        $mail_status = 'error';
-        $mail_error = ' - Email skal udfyldes';
-        $error = 1;
+        $errors['email'] = ' - Email skal udfyldes';
     }
     else if (!valid_email($email)) {
-        $mail_place = $email;
-        $mail_border = 'error_border';
-        $mail_status = 'error';
-        $mail_error = ' - Dette er ikke en valid email adresse';
-        $error = 1;
+        $errors['email'] = ' - Dette er ikke en valid email adresse';
     } else if (!is_filled($pass)) {
-        $mail_place = $email;
-        $pass_border = 'error_border';
-        $pass_status = 'error';
-        $pass_error = ' - Password skal udfyldes';
-        $error = 1;
+        $errors['pass'] = ' - Password skal udfyldes';
     }
 
-    if (empty($error)) {
-        $message = 'ok';
-    } else {
-        $message = "Ret fejl";
+    if (empty($errors)) {
+
+       $admin =  find_admin_by_email($email);
+
+        if($admin) {
+            if(password_verify($pass, $admin['admin_password'])) {
+                log_in_admin($admin);
+                redirect(url_for('/admin/index.php'));
+            } else {
+                $errors['email'] = ' - Email eller bruger navn er forkert';
+                $errors['pass'] = ' - Email eller bruger navn er forkert';
+                $email = '';
+            }
+        } else {
+            $errors['email'] = ' - Email eller bruger navn er forkert';
+            $errors['pass'] = ' - Email eller bruger navn er forkert';
+            $email = '';
+        }
     }
 
 }
@@ -58,13 +52,13 @@ if(is_post_request()) {
             <form name="login" class="login_form" action="<?php echo url_for('/admin/login.php'); ?>" method="post">
 
                 <div class="form_item">
-                    <label for="email" class="formnavn <?php echo $mail_status; ?>">E-mail</label><span class="<?php echo $mail_status; ?>"><?php echo $mail_error; ?></span><br>
-                    <input type="text" name="email" class="textfelt <?php echo $mail_border; ?>" placeholder="<?php echo $mail_place; ?>">
+                    <label for="email" class="formnavn<?php if(isset($errors['email'])) {echo ' error';} ?>">E-mail</label><span class="error"><?php echo $errors['email'] ?? ''; ?></span><br>
+                    <input type="text" name="email" class="textfelt<?php if(isset($errors['email'])) {echo ' error_border';} ?>" placeholder="Indtast din email" value="<?php echo $email ?? ''; ?>">
                 </div>
 
                 <div class="form_item">
-                    <label for="pass" class="formnavn <?php echo $pass_status; ?>">Password</label><span class="<?php echo $pass_status; ?>"><?php echo $pass_error; ?></span><br>
-                    <input type="password" name="pass" class="textfelt <?php echo $pass_border; ?>" placeholder="Indtast dit password">
+                    <label for="pass" class="formnavn<?php if(isset($errors['pass'])) {echo ' error';} ?>">Password</label><span class="error"><?php echo $errors['pass'] ?? ''; ?></span><br>
+                    <input type="password" name="pass" class="textfelt<?php if(isset($errors['pass'])) {echo ' error_border';} ?>" placeholder="Indtast dit password">
                 </div>
 
                 <div class="">
@@ -72,6 +66,15 @@ if(is_post_request()) {
                 </div>
                 <span class="error"><?php echo $message ?? ''; ?></span>
             </form>
+            <p class="error"><?php echo $msg ?? ''; ?></p>
+            <p class="error"><?php if(!empty($errors)) {
+                    echo '<h6>Ret disse fejl:</h6>';
+                    echo '<ul>';
+                    foreach ($errors as $error) {
+                        echo '<li>'.h($error).'</li>';
+                    }
+                    echo '</ul>';
+                } ?></p>
 
         </section>
 
