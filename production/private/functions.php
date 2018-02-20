@@ -35,7 +35,7 @@ function is_post_request() {
     return $_SERVER['REQUEST_METHOD'] == 'POST';
 }
 
-function is_get_requiest() {
+function is_get_request() {
     return $_SERVER['REQUEST_METHOD'] == 'GET';
 }
 
@@ -43,6 +43,20 @@ function is_get_requiest() {
 
 function clean_input($connection, $string) {
    return mysqli_real_escape_string($connection, $string);
+}
+
+// Set status in header to an error code
+
+function error_404($id = '') {
+    header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
+    redirect(url_for('/err_404.php?id='.$id.''));
+    exit();
+}
+
+function error_500() {
+    header($_SERVER['SERVER_PROTOCOL']." 500 Internal Server Error");
+    redirect(url_for('/err_500.php'));
+    exit();
 }
 
 

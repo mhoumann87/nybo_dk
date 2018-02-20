@@ -20,7 +20,7 @@
 
 <header>
     <div class="logo">
-        <a href="<?php echo url_for('/index.php'); ?>"><img src="./images/nybo_logo.svg" class="logo_head" alt="Theis Nybo Foto logo"></a>
+        <a href="<?php echo url_for('/index.php'); ?>"><img src="<?php echo url_for('/images/nybo_logo.svg'); ?>" class="logo_head" alt="Theis Nybo Foto logo"></a>
         <h1 class="usynlig">Theis Nybo Fotografi</h1>
     </div>
     <div class="menu">

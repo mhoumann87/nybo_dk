@@ -15,7 +15,7 @@ function is_filled($value) {
 
 function min_length($value, $min) {
     $length = strlen($value);
-    return $length > $min;
+    return $length >= $min;
 }
 
 // Check to see if it is a valid email

@@ -47,7 +47,7 @@ if (is_post_request()) {
         $sql .= "'".$dato."',";
         $sql .= "'".$hashed_password."')";
 
-        if (create_post($sql)) {
+        if (query_sql($sql)) {
             redirect(url_for('/admin/opret_bruger.php'));
         } else {
             $msg = "Der opstod en fejl, prøv igen";
@@ -62,10 +62,11 @@ if (is_post_request()) {
 
 <main>
     <section class="login_box">
-    <h4>Brugere i dataabasen</h4>
+
+    <div class="table-box">
 
     <table class="admin_tabel">
-
+        <h4 class="space-under">Brugere i dataabasen</h4>
         <tr>
             <th>Fornavn</th>
             <th>Efternavn</th>
@@ -82,15 +83,15 @@ if (is_post_request()) {
                 <td><?php echo h($admin['admin_firstname']); ?></td>
                 <td><?php echo h($admin['admin_lastname']); ?></td>
                 <td><?php echo h($admin['admin_mail']); ?></td>
-                <td><a href="<?php echo url_for('/admin/skift_password.php');?>?id=<?php echo h($admin['admin_id']);?>">Skift Password</a></td>
+                <td><a href="<?php echo url_for('/admin/skift_password.php');?>">Skift Password</a></td>
                 <td><a href="<?php echo url_for('/admin/slet_bruger.php');?>?id=<?php echo h($admin['admin_id']);?>">Slet Bruger</a></td>
             </tr>
             <?php }?>
     </table>
+    </div>
 
-    </section>
 
-    <section class="login_box">
+    <div class="opret-box">
         <h4>Opret ny bruger</h4>
         <p class="space-under">Når der oprettes en bruger, vil password automatisk blive sat til Kode1234. Første gang brugeren logger ind, vil vedkommende blive bedt om at ændre det.</p>
         <form name="login" class="login_form" action="" method="post">
@@ -106,8 +107,8 @@ if (is_post_request()) {
         </div>
 
         <div class="form_item">
-            <label for="email" class="formnavn<?php if(isset($errors['lastname'])) {echo ' error';} ?>">Email</label><span class="error"><?php echo $errors['email'] ?? ''; ?></span><br>
-            <input type="text" name="email" class="textfelt<?php if(isset($errors['lastname'])) {echo ' error_border';} ?>" placeholder="Indtast email" value="<?php echo $email ?? '';?>">
+            <label for="email" class="formnavn<?php if(isset($errors['email'])) {echo ' error';} ?>">Email</label><span class="error"><?php echo $errors['email'] ?? ''; ?></span><br>
+            <input type="text" name="email" class="textfelt<?php if(isset($errors['email'])) {echo ' error_border';} ?>" placeholder="Indtast email" value="<?php echo $email ?? '';?>">
         </div>
 
         <div>
@@ -127,7 +128,8 @@ if (is_post_request()) {
 
     </form>
 
+    </div>
     </section>
-
+</main>
 
 <?php require_once (SHARED_PATH.'/admin_footer.inc.php'); ?>

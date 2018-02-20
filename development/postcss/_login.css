@@ -29,6 +29,39 @@
     color: var(--paragraph);
 }
 
+.table-box {
+    margin-bottom: 2rem;
+}
+
+.box-space {
+    margin: 2rem 0;
+}
+
+.slet_admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.del_button {
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: var(--paragraph);
+    background-color: var(--headline);
+    outline: none;
+    border: 3px var(--headline) solid;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.del_button:active {
+    border: inset 3px #B00000;
+    border-radius: 5px;
+    transition: all .3s;
+}
+
 .login_box {
     padding: 1rem;
     margin-bottom: 2rem;

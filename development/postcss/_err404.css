@@ -1,0 +1,14 @@
+.centered_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.not_found_svg {
+    width: 100%;
+    height: auto;
+    max-width: 37rem;
+    display: block;
+    margin: 2rem auto;
+}

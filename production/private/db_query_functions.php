@@ -32,13 +32,24 @@ function find_admin_by_email($email) {
     confirm_result_set($result);
     $admin = mysqli_fetch_assoc($result);
     return $admin;
-    $admiin;
+    mysqli_free_result($result);
+}
+
+// Find admin by id
+function find_admin_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM admins WHERE admin_id = '".$id."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $admin = mysqli_fetch_assoc($result);
+    return $admin;
     mysqli_free_result($result);
 }
 
 //Create post in database
 
-function create_post($sql) {
+function query_sql($sql) {
     global $db;
    return mysqli_query($db, $sql);
 }

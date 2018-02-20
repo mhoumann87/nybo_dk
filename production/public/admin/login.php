@@ -27,13 +27,22 @@ if(is_post_request()) {
 
         if($admin) {
             if(password_verify($pass, $admin['admin_password'])) {
+
                 log_in_admin($admin);
-                redirect(url_for('/admin/index.php'));
+
+                if($admin['admin_created'] === $admin['admin_changed']) {
+                    redirect(url_for('/admin/skift_password.php?id=first'));
+                } else {
+                    redirect(url_for('/admin/index.php'));
+                }
+
             } else {
+
                 $errors['email'] = ' - Email eller bruger navn er forkert';
                 $errors['pass'] = ' - Email eller bruger navn er forkert';
                 $email = '';
             }
+
         } else {
             $errors['email'] = ' - Email eller bruger navn er forkert';
             $errors['pass'] = ' - Email eller bruger navn er forkert';
@@ -47,10 +56,13 @@ if(is_post_request()) {
 
     <main>
 
+
+
         <section class="login_box">
 
+            <div class="tom-box"></div>
             <form name="login" class="login_form" action="<?php echo url_for('/admin/login.php'); ?>" method="post">
-
+                <h3 class="space-under">Log In</h3>
                 <div class="form_item">
                     <label for="email" class="formnavn<?php if(isset($errors['email'])) {echo ' error';} ?>">E-mail</label><span class="error"><?php echo $errors['email'] ?? ''; ?></span><br>
                     <input type="text" name="email" class="textfelt<?php if(isset($errors['email'])) {echo ' error_border';} ?>" placeholder="Indtast din email" value="<?php echo $email ?? ''; ?>">
@@ -75,15 +87,8 @@ if(is_post_request()) {
                     }
                     echo '</ul>';
                 } ?></p>
-
+            <div class="tom-box"></div>
         </section>
-
-        <?php
-
-
-
-        ?>
-
 
     </main>
 
