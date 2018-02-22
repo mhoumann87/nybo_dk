@@ -1,6 +1,7 @@
 <?php
 
 require_once ('./../../private/initialize.inc.php');
+require_login();
 
 $side = 'nyhed';
 $title = 'Theis Nybo Foto - Skriv nyhed';

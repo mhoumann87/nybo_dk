@@ -39,11 +39,24 @@ function find_admin_by_email($email) {
 function find_admin_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM admins WHERE admin_id = '".$id."' LIMIT 1";
+    $sql = "SELECT * FROM admins WHERE admin_id = '".trim(clean_input($db, $id))."' LIMIT 1";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $admin = mysqli_fetch_assoc($result);
     return $admin;
+    mysqli_free_result($result);
+}
+
+//===================================================Billeder====================================
+
+// Check to see if this photo title is all ready in use
+
+function title_exist($titel) {
+    global $db;
+
+    $sql = "SELECT * FROM billeder WHERE billede_titel = '".trim(clean_input($db, $titel))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    return mysqli_num_rows($result);
     mysqli_free_result($result);
 }
 

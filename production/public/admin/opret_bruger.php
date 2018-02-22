@@ -1,5 +1,6 @@
 <?php
 require_once ('./../../private/initialize.inc.php');
+require_login();
 
 $side = 'bruger';
 $title = 'Theis Nybo Foto - Opret bruger';

@@ -1,11 +1,13 @@
 <?php
 require_once ('./../../private/initialize.inc.php');
+require_login();
 
 $side = 'index';
 $title = 'Theis Nybo Foto - Admin';
 
 require_once (SHARED_PATH.'/admin_header.inc.php');
-?>
+
+    ?>
 
 <main>
 <h2>Admin</h2>

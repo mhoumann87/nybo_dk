@@ -5,6 +5,7 @@ $side = 'bruger';
 $title = 'Theis Nybo Foto - Skift password';
 
 require_once (SHARED_PATH.'/admin_header.inc.php');
+require_login();
 
 if(isset($_GET['id'])) {
 

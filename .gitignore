@@ -156,5 +156,9 @@ production/includes/database-config.inc.php
 
 .menubar_menufirst
 
+# All PHP uploaded images
+
+production/public/images/uploads
+production/public/images/news
 
 # End of https://www.gitignore.io/api/node,windows,jetbrains
