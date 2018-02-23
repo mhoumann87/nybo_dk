@@ -60,6 +60,50 @@ function title_exist($titel) {
     mysqli_free_result($result);
 }
 
+function get_all_photos() {
+    global $db;
+
+    $sql = "SELECT * FROM billeder ORDER BY billede_upload DESC ";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $result_set = mysqli_fetch_assoc($result);
+    return $result_set;
+    mysqli_free_result($result);
+}
+
+function find_photos_by_category($cat) {
+    global $db;
+
+    $sql = "SELECT * FROM billeder WHERE billede_kategori = '".trim(clean_input($db, $cat))."' ORDER BY billede_upload DESC";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $result_set = mysqli_fetch_assoc($result);
+    return $result_set;
+    mysqli_free_result($result);
+}
+
+function find_all_photos() {
+    global $db;
+
+    $sql = "SELECT * FROM billeder ORDER BY billede_upload DESC ";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $photo_set = mysqli_fetch_assoc($result);
+    return $photo_set;
+    mysqli_free_result($result);
+}
+
+function find_photos_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM billeder WHERE billede_kategori = '".trim(clean_input($db, $id))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $photo = mysqli_fetch_assoc($result);
+    return $photo;
+    mysqli_free_result($result);
+}
+
 //Create post in database
 
 function query_sql($sql) {

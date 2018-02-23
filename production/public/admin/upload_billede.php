@@ -6,7 +6,7 @@ $side = 'foto';
 $title = 'Theis Nybo Foto - Upload billede';
 
 
-//require_once (SHARED_PATH.'/admin_header.inc.php');
+require_once (SHARED_PATH.'/admin_header.inc.php');
 
 if (is_post_request()) {
 
@@ -33,7 +33,7 @@ if (is_post_request()) {
     } else if($image_size === false) {
         $errors['photo'] = ' - Dette er ikke et foto';
     } else if($_FILES['pic']['size'] > 2048000) {
-        $errors['photo'] = ' - Billedet er for stort';
+        $errors['photo'] = ' - Billedefilen  er for stor';
     } else if($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png' && $imageFileType != 'gif') {
         $errors['photo'] = ' - Kun filer af typen JPG, GIF eller PNG er tilladt';
     }
