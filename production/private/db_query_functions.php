@@ -125,10 +125,10 @@ function find_all_photos() {
     mysqli_free_result($result);
 }
 
-function find_photos_by_id($id) {
+function find_photo_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM billeder WHERE billede_kategori = '".trim(clean_input($db, $id))."' LIMIT 1";
+    $sql = "SELECT * FROM billeder WHERE billede_id = '".trim(clean_input($db, $id))."' LIMIT 1";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $photo = mysqli_fetch_assoc($result);

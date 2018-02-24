@@ -13,6 +13,7 @@ if (is_post_request()) {
     $name = trim(clean_input($db, $_POST['name']));
     $cat = trim(clean_input($db, $_POST['cat']));
     $target_dir = '../images/uploads/';
+    $filename = basename($_FILES["pic"]["name"]);
     $target_file = $target_dir . basename($_FILES["pic"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $image_size = getimagesize($_FILES['pic']['tmp_name']);
@@ -58,8 +59,8 @@ if(empty($errors)) {
         }
 
         if(move_uploaded_file($_FILES['pic']['tmp_name'], $target_file)) {
-            $sql = "INSERT INTO billeder (billede_link, billede_titel, kategori_id, billede_width, billede_height, billede_upload) ";
-            $sql .= "VALUES ('".$link."', '".$name."', '".$category."', '".$width."', '".$height."', '".$dato."')";
+            $sql = "INSERT INTO billeder (billede_link, billede_filename, billede_titel, kategori_id, billede_width, billede_height, billede_upload) ";
+            $sql .= "VALUES ('".$link."', '".$filename."', '".$name."', '".$category."', '".$width."', '".$height."', '".$dato."')";
 
             if(query_sql($sql)) {
                 redirect(url_for('/admin/vis_billeder.php'));
