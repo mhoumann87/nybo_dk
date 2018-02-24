@@ -49,6 +49,39 @@ function find_admin_by_id($id) {
 
 //===================================================Billeder====================================
 
+//---------------Categories----------------
+
+function find_all_categories() {
+    global $db;
+
+    $sql = "SELECT * FROM kategorier";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+    mysqli_free_result($result);
+}
+
+function find_category_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM kategorier WHERE kategori_id = '".trim(clean_input($db, $id))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $category = mysqli_fetch_assoc($result);
+    return $category;
+    mysqli_free_result($result);
+}
+
+function find_category_by_name($name) {
+    global $db;
+
+    $sql = "SELECT * FROM kategorier WHERE kategori_navn = '".trim(clean_input($db, $name))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+    mysqli_free_result($result);
+}
+
 // Check to see if this photo title is all ready in use
 
 function title_exist($titel) {
@@ -74,7 +107,7 @@ function get_all_photos() {
 function find_photos_by_category($cat) {
     global $db;
 
-    $sql = "SELECT * FROM billeder WHERE billede_kategori = '".trim(clean_input($db, $cat))."' ORDER BY billede_upload DESC";
+    $sql = "SELECT * FROM billeder WHERE kategori_id = '".trim(clean_input($db, $cat))."' ORDER BY billede_upload DESC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $result_set = mysqli_fetch_assoc($result);
@@ -88,8 +121,7 @@ function find_all_photos() {
     $sql = "SELECT * FROM billeder ORDER BY billede_upload DESC ";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
-    $photo_set = mysqli_fetch_assoc($result);
-    return $photo_set;
+    return $result;
     mysqli_free_result($result);
 }
 

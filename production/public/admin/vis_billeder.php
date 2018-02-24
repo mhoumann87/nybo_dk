@@ -28,19 +28,32 @@ if(is_get_request()) {
 
 
 <main>
+    <nav class="sidebar_nav">
+        <?php $categories = find_all_categories();
+            if($categories) {
+             echo '<ul class="sidebar_menu">';
+            while($category = mysqli_fetch_assoc($categories)) { ?>
+                <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php?cat='.h($category['kategori_id']).'')?>"><?php echo h($category['kategori_navn']); ?></a> </li>
+
+        <?php
+                }
+            }
+            echo '</ul>';
+        ?>
+
+    </nav>
     <h3 class="space-under"><?php echo $_GET['cat'] ?? 'Alle billeder'; ?></h3>
     <?php
         if(isset($msg)) {
             echo '<p class="error">'.$msg.'</p>';
         } else {
 
-
-
-
             while($photo = mysqli_fetch_assoc($photos)) { ?>
-
-
-
+                <div class="photo_box">
+                    <img src="<?php echo $photo['billede_link']; ?>" alt="<?php echo $photo['billede_navn']; ?>">
+                    <h5><?php echo $photo['billede_titel']; ?></h5>
+                    <a href="<?php echo url_for('/admin/slet_billede.php?id='.h($photo['billede_id']).'')?>">Slet</a>
+                </div>
                 <?php
             }
         }

@@ -22,6 +22,8 @@ if (is_post_request()) {
     $link = trim(clean_input($db, $target_file));
     $dato = time();
 
+    $kategorier = find_all_categories();
+
     if(!is_filled($name)) {
         $errors['name'] = ' - Du skal angive en title';
     } else if(title_exist($name) !== 0) {
@@ -39,10 +41,25 @@ if (is_post_request()) {
     }
 
 if(empty($errors)) {
+       // echo $cat;
+        $cat_name = mysqli_fetch_assoc(find_category_by_name(trim(clean_input($db, $cat))));
+
+        if($cat_name) {
+
+            $category = $cat_name['kategori_id'];
+
+        } else {
+            $sql = "INSERT INTO kategorier (kategori_navn) VALUES ('".trim(clean_input($db, $cat))."')";
+            if(query_sql($sql)) {
+                $category = mysqli_insert_id($db);
+            } else {
+                $msg = 'Noget gik galt under overførelser (cat)';
+            }
+        }
 
         if(move_uploaded_file($_FILES['pic']['tmp_name'], $target_file)) {
-            $sql = "INSERT INTO billeder (billede_link, billede_titel, billede_kategori, billede_width, billede_height, billede_upload) ";
-            $sql .= "VALUES ('".$link."', '".$name."', '".$cat."', '".$width."', '".$height."', '".$dato."')";
+            $sql = "INSERT INTO billeder (billede_link, billede_titel, kategori_id, billede_width, billede_height, billede_upload) ";
+            $sql .= "VALUES ('".$link."', '".$name."', '".$category."', '".$width."', '".$height."', '".$dato."')";
 
             if(query_sql($sql)) {
                 redirect(url_for('/admin/vis_billeder.php'));
@@ -74,7 +91,17 @@ if(empty($errors)) {
 
             <div class="form_item">
                 <label for="cat" class="formnavn<?php if(isset($errors['cat'])) {echo ' error';}?>">Billedets Kategori</label><span class="error"><?php echo $errors['cat'] ?? ''; ?></span><br>
-                <input type="text" name="cat" class="textfelt<?php if(isset($errors['cat'])) {echo ' error_border';}?>" placeholder="Indtast kategori" value="<?php echo $cat ?? ''; ?>">
+                <input type="text" list="cat" name="cat" class="textfelt<?php if(isset($errors['cat'])) {echo ' error_border';}?>" placeholder="Indtast kategori" value="<?php echo $cat ?? ''; ?>">
+                <datalist id="cat">
+                    <?php
+                    if($kategorier) {
+                    while($kategori = mysqli_fetch_assoc($kategorier)) { ?>
+                    <option value="<?php echo h($kategori['kategori_navn']); ?>">
+                    <?php }
+                    } else {
+                        echo '';
+                    }?>
+                </datalist>
             </div>
 
             <div class="form_itme">
