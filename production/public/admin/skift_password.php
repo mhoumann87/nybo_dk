@@ -65,6 +65,15 @@ if (is_post_request()) {
 ?>
 
     <main>
+
+        <nav class="sidebar_nav">
+
+            <div class="velkommen">
+                <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
+            </div>
+
+        </nav>
+
         <section class="login_box">
             <h3 class="space-under">Skift Password</h3>
             <p class="space-under"><?php echo $velkommen ?? ''; ?></p>

@@ -110,8 +110,7 @@ function find_photos_by_category($cat) {
     $sql = "SELECT * FROM billeder WHERE kategori_id = '".trim(clean_input($db, $cat))."' ORDER BY billede_upload DESC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
-    $result_set = mysqli_fetch_assoc($result);
-    return $result_set;
+    return $result;
     mysqli_free_result($result);
 }
 

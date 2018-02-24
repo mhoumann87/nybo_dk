@@ -62,6 +62,14 @@ if (is_post_request()) {
 ?>
 
 <main>
+    <nav class="sidebar_nav">
+
+        <div class="velkommen">
+            <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
+        </div>
+
+    </nav>
+
     <section class="login_box">
 
     <div class="table-box">

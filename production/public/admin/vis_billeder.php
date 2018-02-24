@@ -12,6 +12,8 @@ if(is_get_request()) {
     if (isset($_GET['cat'])) {
 
         $photos = find_photos_by_category(trim(clean_input($db, $_GET['cat'])));
+        $kategori = find_category_by_id(trim(clean_input($db, $_GET['cat'] )));
+        $cat = h(ucfirst($kategori['kategori_navn']));
 
         if (!$photos) {
             error_404('admin');
@@ -29,11 +31,16 @@ if(is_get_request()) {
 
 <main>
     <nav class="sidebar_nav">
+
+        <div class="velkommen">
+            <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
+        </div>
+
         <?php $categories = find_all_categories();
             if($categories) {
              echo '<ul class="sidebar_menu">';
             while($category = mysqli_fetch_assoc($categories)) { ?>
-                <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php?cat='.h($category['kategori_id']).'')?>"><?php echo h($category['kategori_navn']); ?></a> </li>
+                <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php?cat='.h($category['kategori_id']).'')?>"><?php echo h(ucfirst($category['kategori_navn'])); ?></a> </li>
 
         <?php
                 }
@@ -42,7 +49,7 @@ if(is_get_request()) {
         ?>
 
     </nav>
-    <h3 class="space-under"><?php echo $_GET['cat'] ?? 'Alle billeder'; ?></h3>
+    <h3 class="space-under"><?php echo $cat ?? 'Alle billeder'; ?></h3>
     <?php
         if(isset($msg)) {
             echo '<p class="error">'.$msg.'</p>';

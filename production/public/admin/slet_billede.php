@@ -43,6 +43,14 @@ if (isset($_GET['id'])) {
 
     <main>
 
+        <nav class="sidebar_nav">
+
+            <div class="velkommen">
+                <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
+            </div>
+
+        </nav>
+
         <section class="login_box">
 
             <h3 class="space">Slet Billede</h3>
