@@ -4,6 +4,7 @@ footer {
     display: flex;
     flex-direction: column;
     background: linear-gradient(to bottom, var(--background), var(--paragraph));
+    border-top: 3px solid var(--headline);
 }
 
 
@@ -28,6 +29,13 @@ footer {
 
 footer .foot-social .soc-icon a:any-link {
     color: var(--headline);
+}
+
+.dev {
+    font-size: 8px;
+    position: absolute;
+    margin-bottom: 0;
+    margin-right: 0;
 }
 
 

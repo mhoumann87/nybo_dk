@@ -23,7 +23,7 @@
         <h1 class="usynlig">Theis Nybo Fotografi</h1>
     </div>
     <div class="menu">
-        <nav id="nav" role="navigation">
+        <nav id="nav" class="nav" role="navigation">
             <input class="menu-btn" type="checkbox" id="menu-btn">
             <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
             <div id="show" class="menubar noshow">

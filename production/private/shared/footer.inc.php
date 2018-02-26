@@ -14,7 +14,9 @@
         <p>Please <a href="mailto:theis@mail.test">contact Theis Nybo</a> if you want to use material from here.</p>
     </div>
     <div class="foot-kontakt">
-        <p>Kontakt information</p>
+        <p>Theis Nybo</p>
+        <p><a href="mailto:theis@test.com">Email</a></p>
+
     </div>
     <div class="foot-social">
 
@@ -37,7 +39,7 @@
     </div>
 
 </footer>
-
+<p class="dev">Webdesign and development &copy;2018 <a href="http://michaelhoumann.dk" target="_blank">Michael Houmann</a></p>
 <script src="javascript/javascript.js"></script>
 </body>
 </html>

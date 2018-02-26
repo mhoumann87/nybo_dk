@@ -1,4 +1,4 @@
-nav {
+.nav {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -17,12 +17,12 @@ nav {
     border-bottom: var(--headline) 1px solid;
 }
 
-nav .menu {
+.nav .menu {
     max-height: 0;
     transition: max-height .2s ease-out;
 }
 
-nav .menu-icon {
+.nav .menu-icon {
     cursor: pointer;
     display: inline-block;
     padding: 28px 20px;
@@ -30,7 +30,7 @@ nav .menu-icon {
     user-select: none;
 }
 
-nav .menu-icon .navicon {
+.nav .menu-icon .navicon {
     background: var(--headline);
     display: block;
     height: 2px;
@@ -39,8 +39,8 @@ nav .menu-icon .navicon {
     width: 18px;
 }
 
-nav .menu-icon .navicon:before,
-nav .menu-icon .navicon:after {
+.nav .menu-icon .navicon:before,
+.nav .menu-icon .navicon:after {
     background: var(--headline);
     content: '';
     display: block;
@@ -50,36 +50,36 @@ nav .menu-icon .navicon:after {
     width: 100%;
 }
 
-nav .menu-icon .navicon:before {
+.nav .menu-icon .navicon:before {
     top: 5px;
 }
 
-nav .menu-icon .navicon:after {
+.nav .menu-icon .navicon:after {
     top: -5px;
 }
 
-nav .menu-btn {
+.nav .menu-btn {
     display: none;
 }
 
-nav .menu-btn:checked ~ .menu {
+.nav .menu-btn:checked ~ .menu {
     max-height: 240px;
 }
 
-nav .menu-btn:checked ~ .menu-icon .navicon {
+.nav .menu-btn:checked ~ .menu-icon .navicon {
     background: transparent;
 }
 
-nav .menu-btn:checked ~ .menu-icon .navicon:before {
+.nav .menu-btn:checked ~ .menu-icon .navicon:before {
     transform: rotate(-45deg);
 }
 
-nav .menu-btn:checked ~ .menu-icon .navicon:after {
+.nav .menu-btn:checked ~ .menu-icon .navicon:after {
     transform: rotate(45deg);
 }
 
-nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+.nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
 }
 
@@ -91,17 +91,35 @@ nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     display: block;
 }
 
-nav a:link, nav a:visited, nav a:active {
-    color: var(--paragraph);
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: var(--headline);
+.nav a:hover {
     text-decoration: underline;
 }
 
-nav .active a:any-link {
-    color: var(--headline);
+.nav .active a:any-link {
     text-decoration: underline;
 }
+
+.sidebar_nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0.6rem;
+}
+
+.velkommen {
+    width: 15%;
+    padding-right: 1rem;
+}
+
+.sidebar_menu {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.sb_menu_item {
+    padding: 0 1rem;
+}
+

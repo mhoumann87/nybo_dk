@@ -174,7 +174,7 @@ header {
         height: 8vh;
     }
 
-nav {
+.nav {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -200,13 +200,13 @@ nav {
     border-bottom: #DF0000 1px solid;
 }
 
-nav .menu {
+.nav .menu {
     max-height: 0;
     -webkit-transition: max-height .2s ease-out;
     transition: max-height .2s ease-out;
 }
 
-nav .menu-icon {
+.nav .menu-icon {
     cursor: pointer;
     display: inline-block;
     padding: 28px 20px;
@@ -217,7 +217,7 @@ nav .menu-icon {
             user-select: none;
 }
 
-nav .menu-icon .navicon {
+.nav .menu-icon .navicon {
     background: #DF0000;
     display: block;
     height: 2px;
@@ -227,8 +227,8 @@ nav .menu-icon .navicon {
     width: 18px;
 }
 
-nav .menu-icon .navicon:before,
-nav .menu-icon .navicon:after {
+.nav .menu-icon .navicon:before,
+.nav .menu-icon .navicon:after {
     background: #DF0000;
     content: '';
     display: block;
@@ -239,38 +239,38 @@ nav .menu-icon .navicon:after {
     width: 100%;
 }
 
-nav .menu-icon .navicon:before {
+.nav .menu-icon .navicon:before {
     top: 5px;
 }
 
-nav .menu-icon .navicon:after {
+.nav .menu-icon .navicon:after {
     top: -5px;
 }
 
-nav .menu-btn {
+.nav .menu-btn {
     display: none;
 }
 
-nav .menu-btn:checked ~ .menu {
+.nav .menu-btn:checked ~ .menu {
     max-height: 240px;
 }
 
-nav .menu-btn:checked ~ .menu-icon .navicon {
+.nav .menu-btn:checked ~ .menu-icon .navicon {
     background: transparent;
 }
 
-nav .menu-btn:checked ~ .menu-icon .navicon:before {
+.nav .menu-btn:checked ~ .menu-icon .navicon:before {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
 }
 
-nav .menu-btn:checked ~ .menu-icon .navicon:after {
+.nav .menu-btn:checked ~ .menu-icon .navicon:after {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
 }
 
-nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+.nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
 }
 
@@ -282,19 +282,53 @@ nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     display: block;
 }
 
-nav a:link, nav a:visited, nav a:active {
-    color: #FFFFE8;
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: #DF0000;
+.nav a:hover {
     text-decoration: underline;
 }
 
-nav .active a:link,nav .active a:visited {
-    color: #DF0000;
+.nav .active a:link,.nav .active a:visited {
     text-decoration: underline;
+}
+
+.sidebar_nav {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding: 9.6px;
+    padding: 0.6rem;
+}
+
+.velkommen {
+    width: 15%;
+    padding-right: 16px;
+    padding-right: 1rem;
+}
+
+.sidebar_menu {
+    width: 85%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+
+.sb_menu_item {
+    padding: 0 16px;
+    padding: 0 1rem;
 }
 
 footer {
@@ -310,6 +344,7 @@ footer {
             flex-direction: column;
     background: -webkit-gradient(linear, left top, left bottom, from(#0D0D0D), to(#FFFFE8));
     background: linear-gradient(to bottom, #0D0D0D, #FFFFE8);
+    border-top: 3px solid #DF0000;
 }
 
 .copyright {
@@ -341,6 +376,13 @@ footer {
 
 footer .foot-social .soc-icon a:link,footer .foot-social .soc-icon a:visited {
     color: #DF0000;
+}
+
+.dev {
+    font-size: 8px;
+    position: absolute;
+    margin-bottom: 0;
+    margin-right: 0;
 }
 
 main {

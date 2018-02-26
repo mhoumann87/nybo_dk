@@ -111,6 +111,17 @@ if(is_post_request()) {
     <script src="./ckeditor/ckeditor.js"></script>
 <main>
 
+    <nav class="sidebar_nav">
+
+        <div class="velkommen">
+            <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
+        </div>
+
+        <ul class="sidebar_menu">
+            <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php');?>">Vis Billeder</a></li>
+        </ul>
+    </nav>
+
     <sectiom class="login_box">
         <h3 class="space-under">Skriv Nyhed</h3>
     <form name="skriv" action="<?php url_for('/admin/skriv_nyhed.php');?>" method="post" enctype="multipart/form-data">

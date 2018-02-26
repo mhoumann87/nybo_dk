@@ -99,12 +99,24 @@ if(empty($errors)) {
     <nav class="sidebar_nav">
 
         <div class="velkommen">
-            <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
+            <p>Velkommen <?php echo h($_SESSION['username']); ?></p>
         </div>
 
-        <ul>
-            <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php');?>">Vis Billeder</a></li>
-        </ul>
+        <div class="sidebar_menu">
+
+            <div class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php');?>">Alle Billeder</a></div>
+
+            <?php $categories = find_all_categories();
+            if($categories) {
+                while($category = mysqli_fetch_assoc($categories)) { ?>
+                    <div class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php?cat='.h($category['kategori_id']).'')?>"><?php echo h(ucfirst($category['kategori_navn'])); ?></a> </div>
+                    <?php
+                }
+            }
+            ?>
+
+        </div>
+
     </nav>
 
     <div class="login_box">

@@ -30,23 +30,28 @@ if(is_get_request()) {
 
 
 <main>
+
     <nav class="sidebar_nav">
 
         <div class="velkommen">
             <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
         </div>
 
+        <ul class="sidebar_menu">
+
+            <li><a href="<?php echo url_for('/admin/vis_billeder.php');?>">Alle Billeder</li>
         <?php $categories = find_all_categories();
             if($categories) {
-             echo '<ul class="sidebar_menu">';
             while($category = mysqli_fetch_assoc($categories)) { ?>
                 <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php?cat='.h($category['kategori_id']).'')?>"><?php echo h(ucfirst($category['kategori_navn'])); ?></a> </li>
 
         <?php
                 }
             }
-            echo '</ul>';
+
         ?>
+
+        </ul>
 
     </nav>
     <h3 class="space-under"><?php echo $cat ?? 'Alle billeder'; ?></h3>
