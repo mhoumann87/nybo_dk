@@ -12,16 +12,30 @@ if (is_post_request()) {
 
     $name = trim(clean_input($db, $_POST['name']));
     $cat = trim(clean_input($db, $_POST['cat']));
-    $target_dir = '../images/uploads/';
-    $filename = basename($_FILES["pic"]["name"]);
-    $target_file = $target_dir . basename($_FILES["pic"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $image_size = getimagesize($_FILES['pic']['tmp_name']);
-    $dimensions = explode('"', $image_size[3]);
-    $width = $dimensions[1];
-    $height = $dimensions[3];
-    $link = trim(clean_input($db, $target_file));
     $dato = time();
+
+    $target_dir = '../images/uploads/';
+
+    if(!empty($_FILES['pic']['name'])) {
+        $filename = basename($_FILES["pic"]["name"]);
+        $target_file = $target_dir . basename($_FILES["pic"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $image_size = getimagesize($_FILES['pic']['tmp_name']);
+        $dimensions = explode('"', $image_size[3]);
+        $width = $dimensions[1];
+        $height = $dimensions[3];
+        $link = trim(clean_input($db, $target_file));
+
+    } else {
+        $filename = '';
+        $target_file = '';
+        $imageFileType = '';
+        $image_size = '';
+        $dimensions = '';
+        $width = '';
+        $height = '';
+        $link = '';
+    }
 
     $kategorier = find_all_categories();
 
@@ -31,6 +45,8 @@ if (is_post_request()) {
         $errors['name'] = ' - Der findes allerede et billede med den titel i databasen';
     } else if(!is_filled($cat)) {
         $errors['cat'] = ' - Kategori skal angives';
+    } else if($filename === '') {
+        $errors['photo'] = ' - Der skal vælges et billede';
     } else if(file_exists($target_file)) {
         $errors['photo'] = ' - Der findes allerede et billede med det navn på siden';
     } else if($image_size === false) {
@@ -71,7 +87,7 @@ if(empty($errors)) {
             $msg = 'Billedet kunne ikke uploades, prøv igen';
             echo $target_file;
         }
-}
+        }
 
 }
 
@@ -127,16 +143,16 @@ if(empty($errors)) {
 
         </form>
 
-        <p class="error"><?php echo $msg ?? ''; ?></p>
+            <p class="error"><?php echo $msg ?? ''; ?></p>
 
-        <p class="error"><?php if(!empty($errors)) {
-                echo '<h6>Ret disse fejl:</h6>';
-                echo '<ul>';
-                foreach ($errors as $error) {
-                    echo '<li>'.h($error).'</li>';
-                }
-                echo '</ul>';
-            } ?></p>
+            <p class="error"><?php if(!empty($errors)) {
+                    echo '<h6>Ret disse fejl:</h6>';
+                    echo '<ul>';
+                    foreach ($errors as $error) {
+                        echo '<li>'.h($error).'</li>';
+                    }
+                    echo '</ul>';
+                } ?></p>
 
 
     </div>

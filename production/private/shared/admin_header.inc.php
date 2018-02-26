@@ -1,6 +1,7 @@
 <?php
     if(!isset($title)) { $title = 'Admin'; }
     if(!isset($page)) { $page = ""; }
+    date_default_timezone_set('Europe/Copenhagen');
 ?>
 
 <!doctype html>
