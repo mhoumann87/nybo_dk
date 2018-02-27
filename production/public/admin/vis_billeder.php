@@ -5,7 +5,7 @@ require_once ('./../../private/initialize.inc.php');
 $side = 'foto';
 $title = 'Theis Nybo Foto - Vis billeder';
 
-//require_once (SHARED_PATH.'/admin_header.inc.php');
+require_once (SHARED_PATH.'/admin_header.inc.php');
 
 if(is_get_request()) {
 
@@ -25,6 +25,13 @@ if(is_get_request()) {
             $msg = 'Der er ikke uploaded nogle billeder endnu';
         }
     }
+
+
+    if($photo['billede_height'] > $photo['billede_width']) {
+        $photo_class = 'port';
+    } else {
+        $photo_class =  'lands';
+    }
 }
 ?>
 
@@ -37,13 +44,13 @@ if(is_get_request()) {
             <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
         </div>
 
-        <ul class="sidebar_menu">
+        <div class="sidebar_menu">
 
-            <li><a href="<?php echo url_for('/admin/vis_billeder.php');?>">Alle Billeder</li>
+            <div><a href="<?php echo url_for('/admin/vis_billeder.php');?>">Alle Billeder</div>
         <?php $categories = find_all_categories();
             if($categories) {
             while($category = mysqli_fetch_assoc($categories)) { ?>
-                <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php?cat='.h($category['kategori_id']).'')?>"><?php echo h(ucfirst($category['kategori_navn'])); ?></a> </li>
+                <div class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php?cat='.h($category['kategori_id']).'')?>"><?php echo h(ucfirst($category['kategori_navn'])); ?></a> </div>
 
         <?php
                 }
@@ -51,25 +58,33 @@ if(is_get_request()) {
 
         ?>
 
-        </ul>
+        </div>
 
     </nav>
+
+    <div class="login_box">
+
     <h3 class="space-under"><?php echo $cat ?? 'Alle billeder'; ?></h3>
-    <?php
+
+        <div class="content-box">
+        <?php
         if(isset($msg)) {
             echo '<p class="error">'.$msg.'</p>';
         } else {
 
             while($photo = mysqli_fetch_assoc($photos)) { ?>
                 <div class="photo_box">
-                    <img src="<?php echo $photo['billede_link']; ?>" alt="<?php echo $photo['billede_navn']; ?>">
+                    <img src="<?php echo $photo['billede_link']; ?>" class="<?php echo $photo_class ?? '';?>" alt="<?php echo $photo['billede_navn']; ?>">
                     <h5><?php echo $photo['billede_titel']; ?></h5>
-                    <a href="<?php echo url_for('/admin/slet_billede.php?id='.h($photo['billede_id']).'')?>">Slet</a>
+            <p><a href="<?php echo url_for('/admin/slet_billede.php?id='.h($photo['billede_id']).'')?>" class="center">Slet</a></p>
                 </div>
                 <?php
             }
         }
     ?>
+    </div>
+
+    </div>
 
 </main>
 

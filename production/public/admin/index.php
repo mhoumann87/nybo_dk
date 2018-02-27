@@ -1,6 +1,6 @@
 <?php
 require_once ('./../../private/initialize.inc.php');
-//require_login();
+require_login();
 
 $side = 'foto';
 $title = 'Theis Nybo Foto - Upload billede';
@@ -122,7 +122,7 @@ if(empty($errors)) {
     <div class="login_box">
         <h3 class="space-under">Upload billede</h3>
 
-        <form name="upload" action="<?php echo url_for('/admin/index.php'); ?>" method="post" enctype="multipart/form-data">
+        <form name="form-box" action="<?php echo url_for('/admin/index.php'); ?>" method="post" enctype="multipart/form-data">
 
             <div class="form_item">
                 <label for="name" class="formnavn<?php if(isset($errors['name'])) {echo ' error';}?>">Billedets Titel</label><span class="error"><?php echo $errors['name'] ?? ''; ?></span><br>
@@ -144,12 +144,12 @@ if(empty($errors)) {
                 </datalist>
             </div>
 
-            <div class="form_itme">
+            <div class="form_item">
                 <label for="pic" class="formnavn<?php if(isset($errors['photo'])) {echo ' error';}?>">Vælg billede (max. 2 MB)</label><span class="error"><?php echo $errors['photo'] ?? ''; ?></span><br>
                 <input class=textfelt type="file" name="pic" accept="image/*">
             </div>
 
-            <div class="">
+            <div class="form_item form_buttons">
                 <input type="submit" name="submit" class="loginknap" value="Upload Billede">
             </div>
 

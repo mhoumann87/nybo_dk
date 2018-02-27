@@ -2,16 +2,22 @@
 require_once ('./../../private/initialize.inc.php');
 require_login();
 
-$side = 'bruger';
-$title = 'Theis Nybo Foto - Slet Bruger';
+$side = 'foto';
+$title = 'Theis Nybo Foto - Slet Billede';
 
-//require_once (SHARED_PATH.'/admin_header.inc.php');
+require_once (SHARED_PATH.'/admin_header.inc.php');
 
 if (isset($_GET['id'])) {
 
     $id = trim(clean_input($db, $_GET['id']));
     $photo = find_photo_by_id($id);
-//    var_dump($photo);
+
+
+    if($photo['billede_height'] > $photo['billede_width']) {
+        $photo_class = 'port';
+    } else {
+        $photo_class =  'lands';
+    }
 
     if(!$photo) {
 
@@ -55,22 +61,22 @@ if (isset($_GET['id'])) {
 
             <h3 class="space">Slet Billede</h3>
 
+            <div class="content-box">
             <h4 class="space">Vil du slette dette billede?</h4>
 
-            <div class="del_photo">
-            <img src="<?php echo $photo['billede_link']; ?>">
+            <img src="<?php echo $photo['billede_link']; ?>" class="<?php echo $photo_class ?? ''; ?>" alt="<?php echo $photo['billede_navn'] ?? ''; ?>">
                 <h5><?php echo h($photo['billede_titel']); ?></h5>
             </div>
-            <div class="box-space">
 
-                <form class="slet_billede" name="submit" action="<?php echo url_for('/admin/slet_billede.php');?>" method="post">
+
+                <form class="form_buttons" name="submit" action="<?php echo url_for('/admin/slet_billede.php');?>" method="post">
                     <input type="hidden" name="id" value="<?php echo $photo['billede_id']; ?>">
                     <input type="hidden" name="filename" value="<?php echo $photo['billede_filename']; ?>">
                     <input class="del_button" type="submit" name="delete" value="Slet Billede">
                     <input class="loginknap" type="submit" name="clear" value="Fortryd">
                 </form>
 
-            </div>
+
 
             <p class="error"><?php echo $msg ?? ''; ?></p>
 

@@ -27,14 +27,6 @@
     font-family: inherit;
 }
 
-.form_item {
-    text-align: left;
-    width: 70%;
-    margin-bottom: 10px;
-}
-
-
-
 .sendknap {
     padding:  10px 20px;
     display: block;

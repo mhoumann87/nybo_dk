@@ -54,19 +54,20 @@ if (isset($_GET['id'])) {
 
         <h3 class="space">Slet Admin</h3>
 
-        <h4 class="space">Vil du slette denne bruger</h4>
+        <div class="content-box">
+        <h5 class="space">Vil du slette denne bruger</h5>
 
-        <p><?php echo $admin['admin_firstname'];?>&nbsp;<?php echo $admin['admin_lastname'];?>&nbsp;<?php echo $admin['admin_mail'];?></p>
+        <p class="space-under"><?php echo $admin['admin_firstname'];?>&nbsp;<?php echo $admin['admin_lastname'];?>&nbsp;<?php echo $admin['admin_mail'];?></p>
 
-        <div class="box-space">
+        </div>
 
-            <form class="slet_admin" name="submit" action="<?php echo url_for('/admin/slet_bruger.php');?>" method="post">
+        <form class="form_buttons" name="submit" action="<?php echo url_for('/admin/slet_bruger.php');?>" method="post">
             <input type="hidden" name="id" value="<?php echo $admin['admin_id']; ?>">
             <input class="del_button" type="submit" name="delete" value="Slet Admin">
             <input class="loginknap" type="submit" name="clear" value="Fortryd">
         </form>
 
-        </div>
+
 
         <p class="error"><?php echo $msg ?? ''; ?></p>
 

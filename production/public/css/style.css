@@ -307,13 +307,13 @@ header {
 }
 
 .velkommen {
-    width: 15%;
+    width: 25%;
     padding-right: 16px;
     padding-right: 1rem;
 }
 
 .sidebar_menu {
-    width: 85%;
+    width: 75%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -390,6 +390,8 @@ main {
     min-height: 75vh;
     padding: 10px;
     margin-top: 100px;
+    max-width: 800px;
+    margin: 100px auto 0 auto;
 }
 
 .to-col-grid {
@@ -448,12 +450,6 @@ main {
     padding: 5px;
     border-radius: 5px;
     font-family: inherit;
-}
-
-.form_item {
-    text-align: left;
-    width: 70%;
-    margin-bottom: 10px;
 }
 
 .sendknap {
@@ -613,7 +609,7 @@ main {
     margin: 2rem 0;
 }
 
-.slet_admin {
+.form_buttons {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -625,6 +621,19 @@ main {
         -ms-flex-pack: justify;
             justify-content: space-between;
 }
+
+.form_item {
+    margin-bottom: 16px;
+    margin-bottom: 1rem;
+}
+
+.content-box h5 {
+    text-align: center;
+}
+
+.photo_box p {
+    text-align: center;
+    }
 
 .del_button {
     font-size: 24px;
@@ -648,11 +657,31 @@ main {
     transition: all .3s;
 }
 
+.small {
+    font-size: 12.8px;
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+    margin-bottom: 1rem;
+}
+
 .login_box {
     padding: 16px;
     padding: 1rem;
     margin-bottom: 32px;
-    margin-bottom: 2rem
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin: 0 auto 32px auto;
+    margin: 0 auto 2rem auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center
 
 }
 
@@ -685,6 +714,29 @@ main {
     height: auto;
     max-width: 592px;
     max-width: 37rem;
+    display: block;
+    margin: 32px auto;
+    margin: 2rem auto;
+}
+
+/**********************************
+* Billeder
+**********************************/
+
+.port {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    display: block;
+    margin: 32px auto;
+    margin: 2rem auto;
+
+}
+
+.lands {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
     display: block;
     margin: 32px auto;
     margin: 2rem auto;

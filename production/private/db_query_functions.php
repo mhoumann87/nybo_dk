@@ -137,6 +137,7 @@ function find_photo_by_id($id) {
 
 //====================================NEWS===========================================
 
+//-----------newskat--------------
 function find_news_cat_by_name($name) {
     global $db;
 
@@ -151,6 +152,60 @@ function find_all_news_categories() {
     global $db;
 
     $sql = "SELECT * FROM newskat";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+    mysqli_free_result($result);
+}
+
+function find_news_cat_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM newskat WHERE newskat_id = '".trim(clean_input($db, $id))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+    mysqli_free_result($result);
+}
+
+//--------------newsimgs-------------
+
+function find_newsImg_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM newsimgs WHERE newsImg_id = '".trim(clean_input($db, $id))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+    mysqli_free_result($result);
+}
+
+
+
+function find_news_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM news WHERE news_id = '".trim(clean_input($db, $id))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+    mysqli_free_result($result);
+}
+
+function find_news_by_cat($cat) {
+    global $db;
+
+    $sql = "SELECT * FROM news WHERE newskat_id = '".trim(clean_input($db, $cat))."' ORDER BY news_time DESC";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+    mysqli_free_result($result);
+}
+
+function find_all_news() {
+    global $db;
+
+    $sql = "SELECT * FROM news ORDER BY news_time DESC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;

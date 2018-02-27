@@ -108,12 +108,12 @@
 }
 
 .velkommen {
-    width: 15%;
+    width: 25%;
     padding-right: 1rem;
 }
 
 .sidebar_menu {
-    width: 85%;
+    width: 75%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

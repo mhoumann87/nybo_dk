@@ -1,12 +1,12 @@
 <?php
 
 require_once ('./../../private/initialize.inc.php');
-//require_login();
+require_login();
 
 $side = 'nyhed';
 $title = 'Theis Nybo Foto - Skriv nyhed';
 
-//require_once (SHARED_PATH.'/admin_header.inc.php');
+require_once (SHARED_PATH.'/admin_header.inc.php');
 
 $allowed_tags = '<ol><ul><li><strong><em><p><a>';
 
@@ -85,7 +85,7 @@ if(is_post_request()) {
 
             if(query_sql($sql)) {
                 $photoid = mysqli_insert_id($db);
-                echo $photoid;
+
             } else {
                 $msg = 'Noget gik galt under overførelsen, prøv igen';
             }
@@ -98,7 +98,7 @@ if(is_post_request()) {
         $sql .= "VALUES ('".$titel."', '".$indhold."', '".$dato."', '".$time."', '".$katid."', '".$photoid."')";
 
         if(query_sql($sql)) {
-            $msg = 'Virkede';
+            redirect(url_for('/admin/vis_nyheder.php'));
         } else {
             $msg = 'Noget gik galt under overførelsen';
         }
@@ -114,17 +114,30 @@ if(is_post_request()) {
     <nav class="sidebar_nav">
 
         <div class="velkommen">
-            <p class="space-under">Velkommen&nbsp;<?php echo h($_SESSION['username']); ?></p>
+            <p>Velkommen <?php echo h($_SESSION['username']); ?></p>
         </div>
 
-        <ul class="sidebar_menu">
-            <li class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_billeder.php');?>">Vis Billeder</a></li>
-        </ul>
+        <div class="sidebar_menu">
+
+            <div class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_nyheder.php');?>">Alle Nyheder</a></div>
+
+            <?php $categories = find_all_news_categories();
+            if($categories) {
+                while($category = mysqli_fetch_assoc($categories)) { ?>
+                    <div class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_nyheder.php?cat='.h($category['newskat_id']).'')?>"><?php echo h(ucfirst($category['newskat_navn'])); ?></a> </div>
+                    <?php
+                }
+            }
+            ?>
+
+        </div>
+
     </nav>
+
 
     <sectiom class="login_box">
         <h3 class="space-under">Skriv Nyhed</h3>
-    <form name="skriv" action="<?php url_for('/admin/skriv_nyhed.php');?>" method="post" enctype="multipart/form-data">
+    <form name="form-box" action="<?php url_for('/admin/skriv_nyhed.php');?>" method="post" enctype="multipart/form-data">
 
         <div class="form_item">
             <label for="titel" class="formnavn<?php if(isset($errors['titel'])) {echo ' error';}?>">Titel</label><span class="error"><?php echo $errors['titel'] ?? ''; ?></span><br>
@@ -155,7 +168,7 @@ if(is_post_request()) {
             </datalist>
         </div>
 
-        <div class="form_itme">
+        <div class="form_item">
             <label for="pic" class="formnavn<?php if(isset($errors['photo'])) {echo ' error';}?>">Vælg billede (max. 2 MB)</label><span class="error"><?php echo $errors['photo'] ?? ''; ?></span><br>
             <input class=textfelt type="file" name="pic" accept="image/*">
         </div>

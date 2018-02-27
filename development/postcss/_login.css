@@ -37,11 +37,23 @@
     margin: 2rem 0;
 }
 
-.slet_admin {
+.form_buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
+.form_item {
+    margin-bottom: 1rem;
+}
+
+.content-box h5 {
+    text-align: center;
+}
+
+.photo_box p {
+    text-align: center;
+    }
 
 .del_button {
     font-size: 1.5rem;
@@ -62,9 +74,19 @@
     transition: all .3s;
 }
 
+.small {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
 .login_box {
     padding: 1rem;
     margin-bottom: 2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
  & tabel, & th, & tr, & td  {
     padding: 1rem;
