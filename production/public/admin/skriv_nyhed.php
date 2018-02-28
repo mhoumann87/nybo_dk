@@ -43,8 +43,6 @@ if(is_post_request()) {
         $link = '';
     }
 
-
-
     $kategorier = find_all_news_categories();
 
     if(!is_filled($titel)) {

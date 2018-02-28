@@ -72,7 +72,7 @@ if(is_get_request()) {
 
         <div class="content-box">
 
-                    <div class="news_box">
+                    <div class="news_box box-space">
 
                         <img src="<?php echo $foto; ?>" class="<?php echo $photo_class ?? '';?>" alt="<?php echo $img['newsImg_navn']; ?>">
                         <h5><?php echo $news['news_overskrift']; ?></h5>
@@ -80,8 +80,9 @@ if(is_get_request()) {
 
                             <p><?php echo $news['news_text']; ?></p>
 
-                        <br><br><p><a href="<?php echo url_for('/admin/slet_nyhed.php?id='.trim(clean_input($db, $news['news_id'])).''); ?>">Slet</a></p>
                     </div>
+
+            <p class="form_buttons"> <a href="<?php echo url_for('/admin/slet_nyhed.php?id='.$nyhed['news_id'].'')?>">Slet Nyhed</a><a href="<?php echo url_for('/admin/ret_nyhed.php?id='.$nyhed['news_id'].'')?>">Ret Nyhed</a></p>
 
         </div>
 

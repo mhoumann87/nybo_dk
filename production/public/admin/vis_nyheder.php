@@ -88,7 +88,7 @@ if(is_get_request()) {
                             ?>
                             <img src="<?php echo $img['newsImg_link']; ?>" class="<?php echo $img_class ?? '';?>" alt="<?php echo $img['newsImg_navn']; ?>">
                             <h5><?php echo $nyhed['news_overskrift']; ?></h5>
-                            <a class="small">Uploaded <?php echo $nyhed['news_dato'] ?> Kategori: <a href="<?php echo url_for('/admin/vis_nyheder.php?cat='.$nyhed['newskat_id'].'');?>"><?php echo $kat; ?></a></p>
+                            <p class="small space-under">Uploaded <?php echo $nyhed['news_dato'] ?> Kategori: <a href="<?php echo url_for('/admin/vis_nyheder.php?cat='.$nyhed['newskat_id'].'');?>"><?php echo $kat; ?></a></p>
                             <?php
                                 if(strlen($nyhed['news_text'] >= '250')) {
                                     $url = url_for('/admin/vis_nyhed.php?newsid=').$nyhed['news_id'];
@@ -102,7 +102,7 @@ if(is_get_request()) {
 
                             <br><br>
 
-                            <p> <a href="<?php echo url_for('/admin/slet_nyhed.php?id='.$nyhed['news_id'].'')?>">Slet Nyhed</a></p>
+                            <p class="form_buttons"> <a href="<?php echo url_for('/admin/slet_nyhed.php?id='.$nyhed['news_id'].'')?>">Slet Nyhed</a><a href="<?php echo url_for('/admin/ret_nyhed.php?id='.$nyhed['news_id'].'')?>">Ret Nyhed</a></p>
 
                         </div>
                         <?php

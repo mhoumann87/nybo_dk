@@ -9,9 +9,9 @@
 
 ### Admin Pages
 
-- [ ] Create/change User
-- [ ] Upload Photos
-- [ ] Create Blog Post 
+- [x] Create/change User
+- [x] Upload Photos
+- [x] Create Blog Post 
 
 ## Details
 
@@ -19,4 +19,5 @@
 - [ ] Slide down effect on top menu
 - [ ] Slide in effect on side menus
 - [ ] Light box for photos
+- [ ] New graphics for 404 page
 

@@ -56,16 +56,14 @@ if (isset($_GET['id'])) {
 
         <section class="login_box">
 
-            <h3 class="space">Slet Nyhed</h3>
+            <h3 class="space-under">Slet Nyhed</h3>
 
-            <div class="content-box">
-                <h4 class="space">Vil du slette denne nyhed?</h4>
-
+            <div class="content-box box-space">
+                <h4 class="space-under">Vil du slette denne nyhed?</h4>
                 <img src="<?php echo $img['newsImg_link']; ?>" class="<?php echo $photo_class ?? ''; ?>" alt="<?php echo $img['newsImg_navn'] ?? ''; ?>">
                 <h5><?php echo h($news['news_overskrift']); ?></h5>
                 <p><?php echo $news['news_text'] ?></p>
             </div>
-
 
             <form class="form_buttons" name="submit" action="<?php echo url_for('/admin/slet_nyhed.php');?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $news['news_id']; ?>">
@@ -73,8 +71,6 @@ if (isset($_GET['id'])) {
                 <input class="del_button" type="submit" name="delete" value="Slet Nyhed">
                 <input class="loginknap" type="submit" name="clear" value="Fortryd">
             </form>
-
-
 
             <p class="error"><?php echo $msg ?? ''; ?></p>
 
