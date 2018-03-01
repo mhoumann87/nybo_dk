@@ -23,6 +23,11 @@
     color: var(--headline);
 }
 
+.success {
+    font-weight: bold;
+    color: var(--success);
+}
+
 .error_border {
     border: 2px var(--headline) solid;
     background-color: var(--opeq_red);

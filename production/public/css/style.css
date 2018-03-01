@@ -593,6 +593,11 @@ main {
     color: #DF0000;
 }
 
+.success {
+    font-weight: bold;
+    color: #137506;
+}
+
 .error_border {
     border: 2px #DF0000 solid;
     background-color: rgba(223, 0, 0, .5);

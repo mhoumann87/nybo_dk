@@ -71,7 +71,7 @@ if (isset($_GET['id'])) {
                 <input class="del_button" type="submit" name="delete" value="Slet Nyhed">
                 <input class="loginknap" type="submit" name="clear" value="Fortryd">
             </form>
-
+            <a href="<?php echo url_for('/admin/ret_nyhed.php?id='.$id.'')?>">Ret Nyhed</a>
             <p class="error"><?php echo $msg ?? ''; ?></p>
 
         </section>
