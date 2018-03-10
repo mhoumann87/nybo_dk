@@ -28,12 +28,22 @@ if (isset($_GET['id'])) {
 
     if (array_key_exists('delete', $_POST)) {
         $sql = "DELETE FROM news WHERE news_id = '".trim(clean_input($db,$_POST['id']))."' LIMIT 1";
-        unlink('../images/news/'.$_POST['filename'].'');
-        if(query_sql($sql)) {
-            redirect(url_for('/admin/vis_nyheder.php'));
-        } else {
-            $msg = 'Der opstod en fejl. Prøv igen.';
-        }
+
+            if(query_sql($sql)) {
+
+                $sql ="DELETE FROM newsimgs WHERE newsImg_navn = '".$_POST['filename']."' LIMIT 1";
+                echo $sql;
+                unlink('../images/news/'.$_POST['filename'].'');
+
+                if(query_sql($sql)) {
+                    redirect(url_for('/admin/vis_nyheder.php'));
+                } else {
+                    $msg = 'Der opstod en fejl. Prøv igen.';
+                }
+
+            } else {
+                $msg = 'Der opstod en fejl. Prøv igen.';
+           }
 
     } else if (array_key_exists('clear', $_POST)) {
         redirect(url_for('/admin/vis_nyheder.php'));

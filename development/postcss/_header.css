@@ -13,20 +13,36 @@ header {
     top: 0;
 }
 
-.usynlig {
+.vis-ikke {
     display: none;
 }
 
-.show {
-    display: block;
+.logo_head {
+    width: auto;
+    height: 6vh;
 }
-    .logo {
-        width: 50%;
-    }
 
-    .logo_head {
-        width: auto;
-        height: 8vh;
+@supports (grid-area: auto) {
+
+    @media screen and (min-width: 50rem) {
+
+        header {
+            padding: 1rem 0;
+            flex-direction: column;
+            /*justify-content: flex-start;*/
+            align-content: center;
+            /*align-items: center;*/
+            position: static;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        .logo_head {
+            height: 10vh;
+        }
     }
+}
 
 

@@ -15,18 +15,20 @@
     <title><?php echo($title); ?></title>
     <link rel="stylesheet" href="<?php echo url_for('/css/style.css'); ?>" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="<?php echo url_for('/images/favicon.png')?>" type="image/x-icon')>">
 </head>
+
 <body>
 
 <header>
     <div class="logo">
         <a href="<?php echo url_for('/index.php'); ?>"><img src="<?php echo url_for('/images/nybo_logo.svg'); ?>" class="logo_head" alt="Theis Nybo Foto logo"></a>
-        <h1 class="usynlig">Theis Nybo Fotografi</h1>
+        <h1 class="vis-ikke">Theis Nybo Fotografi</h1>
     </div>
     <div class="menu">
         <nav id="nav" class="nav" role="navigation">
             <input class="menu-btn" type="checkbox" id="menu-btn">
-            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <label class="menu-icon show" for="menu-btn"><span class="navicon"></span></label>
             <div id="show" class="menubar noshow">
                 <div class="menu-item <?php echo ($side == 'index') ? 'active' : ' '; ?>"><a href="<?php echo url_for('/index.php'); ?>">Forside</a></div>
                 <div class="menu-item <?php echo ($side == 'foto') ? 'active' : ' '; ?>"><a href="<?php echo url_for('/foto.php'); ?>">Fotografi</a></div>

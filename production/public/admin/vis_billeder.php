@@ -1,6 +1,6 @@
 <?php
 require_once ('./../../private/initialize.inc.php');
-//require_login();
+require_login();
 
 $side = 'foto';
 $title = 'Theis Nybo Foto - Vis billeder';
@@ -26,12 +26,6 @@ if(is_get_request()) {
         }
     }
 
-
-    if($photo['billede_height'] > $photo['billede_width']) {
-        $photo_class = 'port';
-    } else {
-        $photo_class =  'lands';
-    }
 }
 ?>
 
@@ -73,8 +67,18 @@ if(is_get_request()) {
         } else {
 
             while($photo = mysqli_fetch_assoc($photos)) { ?>
-                <div class="photo_box">
-                    <img src="<?php echo $photo['billede_link']; ?>" class="<?php echo $photo_class ?? '';?>" alt="<?php echo $photo['billede_navn']; ?>">
+
+            <?php
+
+            if($photo['billede_height'] > $photo['billede_width']) {
+                $photo_class = 'port';
+            } else {
+                 $photo_class =  'lands';
+            }
+            ?>
+
+                <class="photo_box">
+                    <img src="<?php echo $photo['billede_link']; ?>" class="<?php echo $photo_class ?? '';?>" alt="<?php echo $photo['billede_titel']; ?>">
                     <h5><?php echo $photo['billede_titel']; ?></h5>
             <p><a href="<?php echo url_for('/admin/slet_billede.php?id='.h($photo['billede_id']).'')?>" class="center">Slet</a></p>
                 </div>

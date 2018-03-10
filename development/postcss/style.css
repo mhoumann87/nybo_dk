@@ -4,9 +4,9 @@
 @import "navigation";
 @import "footer";
 @import "main";
-@import "grids";
 @import "kontakt";
 @import "news";
 @import "_login";
 @import "_err404";
 @import "_adcontent";
+@import "_frontpage";

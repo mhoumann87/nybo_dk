@@ -94,6 +94,8 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 100%;
     color: var(--paragraph);
+    background-color: var(--background);
+    width: 100%;
 }
 
 a:any-link {
@@ -104,14 +106,15 @@ a:any-link {
 a:hover {
     color: var(--headline);
     transition: color .3s ease-in;
-
-}
-
-body {
-    background-color: var(--background);
 }
 
 .space-under {
     margin-bottom: 2rem;
 }
+@media screen and  (min-width: 112.500em) {
 
+    body {
+        width: 112.500em;
+        margin: 0 auto;
+    }
+}

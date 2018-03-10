@@ -21,6 +21,7 @@ if(is_post_request()) {
     $indhold = trim(clean_input($db, $text));
 
     $target_dir = '../images/news/';
+    $link_dir = url_for('/images/news/');
 
     if(!empty($_FILES['pic']['name'])) {
         $filename = basename($_FILES["pic"]["name"]);
@@ -30,7 +31,7 @@ if(is_post_request()) {
         $dimensions = explode('"', $image_size[3]);
         $width = $dimensions[1];
         $height = $dimensions[3];
-        $link = trim(clean_input($db, $target_file));
+        $link = $link_dir.basename($_FILES["pic"]["name"]);
 
     } else {
         $filename = '';

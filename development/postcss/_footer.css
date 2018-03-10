@@ -38,4 +38,27 @@ footer .foot-social .soc-icon a:any-link {
     margin-right: 0;
 }
 
+@supports (grid-area: auto) {
 
+    @media screen and (min-width: 50rem) {
+
+        footer {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .copyright {
+            width: 33.3%
+        }
+
+        .foot-kontakt {
+            width: 33.3%
+        }
+
+        .foot-social {
+            width: 33.3%
+        }
+
+    }
+
+}
