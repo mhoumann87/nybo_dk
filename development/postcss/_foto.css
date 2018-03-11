@@ -1,0 +1,121 @@
+.sidebar {
+    width: 100%;
+}
+
+.sidebar nav .side-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.side_nav_item {
+    padding: 1rem;
+    text-align: center;
+}
+
+.side_nav_item a:any-link {
+    text-decoration: none;
+}
+
+.side_nav_item .active {
+    color: var(--headline);
+}
+
+.fotoside_fotobox h3 {
+    text-align: center;
+}
+
+@supports (grid-area: auto) {
+
+    @media screen and (min-width: 37.500rem) {
+        .fotos {
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 40rem) {
+
+        .foto-side {
+
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: auto;
+            grid-template-areas:
+        "sidebar fotos fotos fotos fotos fotos fotos";
+}
+
+        .sidebar {
+            grid-area: sidebar;
+}
+
+        .fotos {
+            grid-area: fotos;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .sidebar nav .side-nav {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @media screen and (min-width: 50rem) {
+        .fotos {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .fotos .fotoside_fotobox {
+            display: grid;
+         }
+
+        .foto_caption,
+        .foto_fill {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .foto_fill {
+            align-items: start;
+         }
+
+        .foto_caption {
+            opacity: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            padding: 1rem;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .foto_caption:hover {
+            opacity: 1;
+            transition: all .8s;
+        }
+
+    }
+
+    @media screen and (min-width: 75rem) {
+        .fotos {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    @media screen and (min-width: 100rem) {
+        .fotos {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+
+    @media screen and (min-width: 112.500rem) {
+        .fotos {
+            grid-template-columns: repeat(7, 1fr);
+        }
+    }
+
+}

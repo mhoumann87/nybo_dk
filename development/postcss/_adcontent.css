@@ -4,10 +4,10 @@
 
 .port {
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     height: auto;
     display: block;
-    margin: 2rem auto;
+
 
 }
 
@@ -16,6 +16,6 @@
     max-width: 500px;
     height: auto;
     display: block;
-    margin: 2rem auto;
+
 }
 

@@ -111,10 +111,10 @@ a:hover {
 .space-under {
     margin-bottom: 2rem;
 }
-@media screen and  (min-width: 112.500em) {
+@media screen and  (min-width: 112.500rem) {
 
     body {
-        width: 112.500em;
+        width: 112.500rem;
         margin: 0 auto;
     }
 }
