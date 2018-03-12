@@ -82,12 +82,30 @@ function find_category_by_name($name) {
     mysqli_free_result($result);
 }
 
+function category_exists($id) {
+    global $db;
+
+    $sql = "SELECT * FROM kategorier WHERE kategori_id = '".trim(clean_input($db, $id))."'";
+    $result = mysqli_query($db, $sql);
+    return mysqli_num_rows($result);
+    mysqli_free_result($result);
+}
+
 // Check to see if this photo title is all ready in use
 
 function title_exist($titel) {
     global $db;
 
     $sql = "SELECT * FROM billeder WHERE billede_titel = '".trim(clean_input($db, $titel))."' LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    return mysqli_num_rows($result);
+    mysqli_free_result($result);
+}
+
+function photo_exist($id) {
+    global $db;
+
+    $sql = "SELECT * FROM billeder WHERE kategori_id = '".trim(clean_input($db, $id))."'";
     $result = mysqli_query($db, $sql);
     return mysqli_num_rows($result);
     mysqli_free_result($result);
