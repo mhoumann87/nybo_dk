@@ -7,6 +7,8 @@ require_once('./../private/shared/header.inc.php');
 
 <main>
 
+
+
     <section class="forside">
 
         <section class="front-foto">
@@ -32,8 +34,8 @@ require_once('./../private/shared/header.inc.php');
                 ?>
                 <article class="photo-card">
 
-                    <h3 class="space-under"><?php echo h($photo['billede_titel']) ?? '';?></h3>
                     <img src="<?php echo $photo['billede_link'] ?? '';?>" class="space-under <?php echo $photo_class ?? '';?>" alt="<?php echo $photo['photo_title'] ?? '';?>">
+                    <h3 class="space-under"><?php echo h($photo['billede_titel']) ?? '';?></h3>
                     <p>Kategori : <a href="<?php echo url_for('/foto.php?id='.$photo['kategori_id'].'');?>"><?php echo $cat ?? ''; ?></a></p>
 
                 </article>
@@ -85,7 +87,7 @@ require_once('./../private/shared/header.inc.php');
                     </div>
                     <div class="front_news_content">
 
-                        <p><?php echo substr( $news['news_text'], 0 , 150); ?>... <a href="<?php echo url_for('/nyheder.php?newsid='.$news['news_id'].'') ;?>">Læs mere</a> </P>
+                        <p><?php echo substr($news['news_text'], 0 , 150); ?>... <a href="<?php echo url_for('/nyhed.php?id='.$kategori['newskat_id'].'&newsid='.$news['news_id'].'') ;?>">Læs mere</a> </P>
                     </div>
 
                 </article>

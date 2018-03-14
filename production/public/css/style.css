@@ -512,6 +512,7 @@ footer .foot-social .soc-icon a:link,footer .foot-social .soc-icon a:visited {
 }
 
 main {
+    display: block;
     width: 100%;
     min-height: 75vh;
     padding: 10px;
@@ -519,7 +520,6 @@ main {
     max-width: 50rem;
     margin: 100px auto 0 auto;
     margin: 6.250rem auto 0 auto;
-
 }
 
 @supports (grid-area: auto) {
@@ -534,9 +534,18 @@ main {
     }
 }
 
+/************************************************
+* Kontakt form
+ *************************************************/
+
+.kontakt-side {
+    width: 100%;
+}
+
 .meddelse {
     margin-top: 10px;
     padding: 10px;
+
 }
 
 .kontakt_form {
@@ -551,8 +560,13 @@ main {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+}
 
+.kontakt-box {
+}
 
+.form_item {
+    width: 40%;
 }
 
 .textfelt {
@@ -595,6 +609,19 @@ main {
             transform: translateY(3px);
 }
 
+/***************************************************
+* Kontakt Information and about
+ ****************************************************/
+
+.flex-con {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
 .kontakt_info {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -608,6 +635,51 @@ main {
             justify-content: space-evenly;
     padding: 10px;
 }
+
+.con-about {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start
+}
+
+.con-about .af-box {
+    width: 40%;
+}
+
+.con-about .about-headline {
+    width: 60%;
+}
+
+.con-about .about-headline h4 {
+    text-align: end;
+}
+
+.con-about .about-content {
+    width: 100%;
+    margin-top: 32px;
+    margin-top: 2rem;
+}
+
+.con-about .about-foto {
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+    border-radius: 50%;
+}
+
+/******************************************************
+* Sociale medier
+ ******************************************************/
 
 .kontakt-soc {
     padding: 10px;
@@ -626,6 +698,67 @@ main {
 .kontakt-icon {
     font-size: 40px;
     font-size: 2.5rem;
+}
+
+@supports (grid-area: auto) {
+
+    @media screen and (min-width: 50rem) {
+
+        .kontakt-side {
+            display: grid;
+            grid-template-columns: 3fr 3fr 1fr;
+            grid-gap: 1rem;
+            grid-template-areas:
+
+            "adrinfo form social"
+        ;
+        }
+
+        .con_about {
+            grid-area: adrinfo;
+        }
+
+.kontakt_form {
+    grid-area: form;
+}
+
+.form_item {
+    width: 100%;
+}
+
+.soc {
+    grid-area: social;
+}
+
+.flex-con {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+        .kontakt-soc {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: end;
+                -ms-flex-align: end;
+                    align-items: flex-end
+    }
+
+        .kontakt-soc .kontakt-icon {
+            margin-top: 4rem;
+        }
+
+    .kontakt_info {
+        margin-bottom: 4rem;
+    }
+
+
+    }
+
+
 }
 
 .news_page {
@@ -878,13 +1011,16 @@ main {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     text-align: center;
-    padding: 32px;
-    padding: 2rem;
-    border: 1px solid #DF0000;
+    border-bottom: 3px solid #DF0000;
+    padding-bottom: 16px;
+    padding-bottom: 1rem;
     margin-bottom: 16px;
     margin-bottom: 1rem;
 }
@@ -1001,6 +1137,8 @@ main {
     margin-bottom: 32px;
     margin-bottom: 2rem;
     border: 1px solid #DF0000;
+    padding: 16px;
+    padding: 1rem;
 }
 
 .top {
@@ -1163,7 +1301,7 @@ main {
         }
     }
 
-    @media screen and (min-width: 40rem) {
+    @media screen and (min-width: 60rem) {
 
         .foto-side {
 
@@ -1254,6 +1392,120 @@ main {
         .fotos {
             grid-template-columns: repeat(7, 1fr);
         }
+    }
+
+}
+
+.news-lands {
+    width: 100%;
+    height: auto;
+}
+
+.newsside_newsbox {
+    padding: 16px 0;
+    padding: 1rem 0;
+}
+
+.news-headline {
+      background-color: #DF0000;
+     padding: 8px;
+     padding: .5rem
+  }
+
+.news-headline h4 {
+    color: #FFFFE8;
+}
+
+.news_subline {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 6.4px;
+    padding: .4rem;
+}
+
+@supports (grid-area: auto) {
+
+    @media screen and (min-width: 60rem) {
+
+        .news-side {
+
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: auto;
+            grid-template-areas: "sidebar news news news news news news";
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+        }
+
+        .news {
+            grid-area: news;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .news {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 75rem) {
+
+        .news {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+.stor_nyhed {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+.overskrift {
+    padding: 24px;
+    padding: 1.5rem
+}
+
+.overskrift h3 {
+    text-align: center;
+}
+
+.news_subline {
+    padding-top: 16px;
+    padding-top: 1rem;
+    border-top: 1px solid #DF0000;
+    border-bottom: 1px solid #DF0000;
+    margin-bottom: 32px;
+    margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 60rem) {
+
+    .onenews-side {
+
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas: "sidebar news news news news news news";
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+
+    .one_news {
+        grid-area: news;
+
     }
 
 }

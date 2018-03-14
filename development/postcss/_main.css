@@ -1,10 +1,10 @@
 main {
+    display: block;
     width: 100%;
     min-height: 75vh;
     padding: 10px;
     max-width: 50rem;
     margin: 6.250rem auto 0 auto;
-
 }
 
 @supports (grid-area: auto) {
@@ -18,3 +18,4 @@ main {
 
     }
 }
+

@@ -1,6 +1,16 @@
+/************************************************
+* Kontakt form
+ *************************************************/
+
+.kontakt-side {
+    width: 100%;
+}
+
+
 .meddelse {
     margin-top: 10px;
     padding: 10px;
+
 }
 
 .kontakt_form {
@@ -8,8 +18,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
+.kontakt-box {
+}
 
+.form_item {
+    width: 40%;
 }
 
 .textfelt {
@@ -48,12 +63,60 @@
     transform: translateY(3px);
 }
 
+/***************************************************
+* Kontakt Information and about
+ ****************************************************/
+
+.flex-con {
+    display: flex;
+    justify-content: space-between;
+}
+
 .kontakt_info {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     padding: 10px;
 }
+
+
+.con-about {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+& .af-box {
+      width: 40%;
+  }
+
+& .about-headline {
+      width: 60%;
+
+    & h4 {
+    text-align: end;
+      }
+  }
+
+& .about-content {
+      width: 100%;
+      margin-top: 2rem;
+
+  }
+
+& .about-foto {
+      width: 100%;
+      height: auto;
+      max-width: 250px;
+      border-radius: 50%;
+  }
+}
+
+
+/******************************************************
+* Sociale medier
+ ******************************************************/
 
 .kontakt-soc {
     padding: 10px;
@@ -64,5 +127,58 @@
 
 .kontakt-icon {
     font-size: 2.5rem;
+}
+
+@supports (grid-area: auto) {
+
+    @media screen and (min-width: 50rem) {
+
+        .kontakt-side {
+            display: grid;
+            grid-template-columns: 3fr 3fr 1fr;
+            grid-gap: 1rem;
+            grid-template-areas:
+
+            "adrinfo form social"
+        ;
+        }
+
+        .con_about {
+            grid-area: adrinfo;
+        }
+
+.kontakt_form {
+    grid-area: form;
+}
+
+.form_item {
+    width: 100%;
+}
+
+.soc {
+    grid-area: social;
+}
+
+.flex-con {
+    flex-direction: column;
+}
+
+        .kontakt-soc {
+            flex-direction: column;
+            align-items: flex-end;
+
+    & .kontakt-icon {
+          margin-top: 4rem;
+      }
+    }
+
+    .kontakt_info {
+        margin-bottom: 4rem;
+    }
+
+
+    }
+
+
 }
 

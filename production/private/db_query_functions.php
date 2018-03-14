@@ -155,6 +155,15 @@ function find_photo_by_id($id) {
 
 //====================================NEWS===========================================
 
+function news_exists($id) {
+    global $db;
+
+    $sql = "SELECT * FROM news WHERE news_id = '".trim(clean_input($db, $id))."'";
+    $result = mysqli_query($db, $sql);
+    return mysqli_num_rows($result);
+    mysqli_free_result($result);
+}
+
 //-----------newskat--------------
 function find_news_cat_by_name($name) {
     global $db;
@@ -183,6 +192,15 @@ function find_news_cat_by_id($id) {
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
+    mysqli_free_result($result);
+}
+
+function newskat_exists($id) {
+    global $db;
+
+    $sql = "SELECT * FROM newskat WHERE newskat_id = '".trim(clean_input($db, $id))."'";
+    $result = mysqli_query($db, $sql);
+    return mysqli_num_rows($result);
     mysqli_free_result($result);
 }
 
@@ -229,6 +247,8 @@ function find_all_news() {
     return $result;
     mysqli_free_result($result);
 }
+
+
 
 //Create post in database
 

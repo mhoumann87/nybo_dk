@@ -1,0 +1,45 @@
+.stor_nyhed {
+    display: block;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+.overskrift {
+    padding: 1.5rem;
+
+& h3 {
+    text-align: center;
+  }
+}
+
+.news_subline {
+    padding-top: 1rem;
+    border-top: 1px solid var(--headline);
+    border-bottom: 1px solid var(--headline);
+    margin-bottom: 2rem;
+}
+
+
+
+
+@media screen and (min-width: 60rem) {
+
+    .onenews-side {
+
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas: "sidebar news news news news news news";
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+
+    .one_news {
+        grid-area: news;
+
+    }
+
+}

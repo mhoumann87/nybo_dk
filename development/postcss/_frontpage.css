@@ -7,10 +7,11 @@
 .photo-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     text-align: center;
-    padding: 2rem;
-    border: 1px solid var(--headline);
+    border-bottom: 3px solid var(--headline);
+    padding-bottom: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -108,6 +109,7 @@
     align-items: baseline;
     margin-bottom: 2rem;
     border: 1px solid var(--headline);
+    padding: 1rem;
 }
 
 .top {
