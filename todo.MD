@@ -4,8 +4,8 @@
 
 ### Public Pages
 
-- [ ] Frontpage
-- [ ] Foto Page
+- [x] Frontpage
+- [x] Foto Page
 
 ### Admin Pages
 
@@ -20,4 +20,5 @@
 - [ ] Slide in effect on side menus
 - [ ] Light box for photos
 - [ ] New graphics for 404 page
+- [ ] Remove right click on photos
 
