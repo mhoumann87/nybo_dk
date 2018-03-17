@@ -152,7 +152,7 @@ $RECYCLE.BIN/
 
 # Config file for the database connection
 
-production/includes/database-config.inc.php
+production/private/database-config.inc.php
 
 .menubar_menufirst
 
