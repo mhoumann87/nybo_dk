@@ -23,7 +23,12 @@ if(is_post_request()) {
     $target_dir = '../images/news/';
     $link_dir = url_for('/images/news/');
 
-    if(!empty($_FILES['pic']['name'])) {
+
+    if(empty($_FILES['pic']['name'])) {
+        $errors['photo'] = ' - Der skal vælges et foto';
+    } else if($_FILES['pic']['error'] === 2) {
+        $errors['photo'] = ' - Billed filen er for stor, den må max være ' . ini_get('upload_max_filesize') . 'B';
+    } else {
         $filename = basename($_FILES["pic"]["name"]);
         $target_file = $target_dir . basename($_FILES["pic"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -33,36 +38,27 @@ if(is_post_request()) {
         $height = $dimensions[3];
         $link = $link_dir.basename($_FILES["pic"]["name"]);
 
-    } else {
-        $filename = '';
-        $target_file = '';
-        $imageFileType = '';
-        $image_size = '';
-        $dimensions = '';
-        $width = '';
-        $height = '';
-        $link = '';
+        if(!is_filled($titel)) {
+            $errors['titel'] = ' - Titel skal udfyldes';
+        } else if(!is_filled($text)) {
+            $errors['text'] = ' - Indhold skal udfyldes';
+        } else if(!is_filled($cat)) {
+            $errors['cat'] = ' - Kategori skal udfyldes';
+        } else if($filename === '') {
+            $errors['photo'] = ' - Der skal vælges et billede';
+        } else if(file_exists($target_file)) {
+            $errors['photo'] = ' - Der findes allerede et billede med det navn på siden';
+        } else if($image_size === false) {
+            $errors['photo'] = ' - Dette er ikke et foto';
+        } else if($_FILES['pic']['size'] > 2048000) {
+            $errors['photo'] = ' - Billedefilen  er for stor';
+        } else if($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png' && $imageFileType != 'gif') {
+            $errors['photo'] = ' - Kun filer af typen JPG, GIF eller PNG er tilladt';
+        }
+
     }
 
     $kategorier = find_all_news_categories();
-
-    if(!is_filled($titel)) {
-        $errors['titel'] = ' - Titel skal udfyldes';
-    } else if(!is_filled($text)) {
-        $errors['text'] = ' - Indhold skal udfyldes';
-    } else if(!is_filled($cat)) {
-        $errors['cat'] = ' - Kategori skal udfyldes';
-    } else if($filename === '') {
-        $errors['photo'] = ' - Der skal vælges et billede';
-    } else if(file_exists($target_file)) {
-        $errors['photo'] = ' - Der findes allerede et billede med det navn på siden';
-    } else if($image_size === false) {
-        $errors['photo'] = ' - Dette er ikke et foto';
-    } else if($_FILES['pic']['size'] > 2048000) {
-        $errors['photo'] = ' - Billedefilen  er for stor';
-    } else if($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png' && $imageFileType != 'gif') {
-        $errors['photo'] = ' - Kun filer af typen JPG, GIF eller PNG er tilladt';
-    }
 
     if(empty($errors)) {
 

@@ -59,4 +59,23 @@ function error_500() {
     exit();
 }
 
+// Calculate filesize
+
+function convert_to_bytes($size) {
+    $size = trim($size);
+    $last = strtolower($size[strlen($size) - 1]);
+
+    if (in_array($last, array('g', 'm', 'k'))) {
+        switch ($last) {
+            case 'g':
+                $size *= 1024;
+            case 'm':
+                $size *= 1024;
+            case 'k':
+                $size *= 1024;
+        }
+    }
+    return $size;
+}
+
 

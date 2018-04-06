@@ -19,33 +19,22 @@ if (is_post_request()) {
     $target_dir = '../images/uploads/';
     $link_dir = url_for('images/uploads/');
 
+if(empty($_FILES['pic']['name'])) {
+    $errors['photo'] = ' - Der skal vælges et foto';
+} else if($_FILES['pic']['error'] === 2) {
+    $errors['photo']  = ' - Billed filen er for stor, den må max være '.ini_get('upload_max_filesize').'B';
+} else {
+    $filename = basename($_FILES["pic"]["name"]);
+    $target_file = $target_dir . basename($_FILES["pic"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $image_size = getimagesize($_FILES['pic']['tmp_name']);
+    $file_size = $_FILES['pic']['size'];
+    $dimensions = explode('"', $image_size[3]);
+    $width = $dimensions[1];
+    $height = $dimensions[3];
+    $link = $link_dir.basename($_FILES["pic"]["name"]);
 
-
-    if(!empty($_FILES['pic']['name'])) {
-        $filename = basename($_FILES["pic"]["name"]);
-        $target_file = $target_dir . basename($_FILES["pic"]["name"]);
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $image_size = getimagesize($_FILES['pic']['tmp_name']);
-        $dimensions = explode('"', $image_size[3]);
-        $width = $dimensions[1];
-        $height = $dimensions[3];
-        $link = $link_dir.basename($_FILES["pic"]["name"]);
-
-
-    } else {
-        $filename = '';
-        $target_file = '';
-        $imageFileType = '';
-        $image_size = '';
-        $dimensions = '';
-        $width = '';
-        $height = '';
-        $link = '';
-    }
-
-    $kategorier = find_all_categories();
-
-    if(!is_filled($name)) {
+    if (!is_filled($name)) {
         $errors['name'] = ' - Du skal angive en title';
     } else if(title_exist($name) !== 0) {
         $errors['name'] = ' - Der findes allerede et billede med den titel i databasen';
@@ -57,11 +46,15 @@ if (is_post_request()) {
         $errors['photo'] = ' - Der findes allerede et billede med det navn på siden';
     } else if($image_size === false) {
         $errors['photo'] = ' - Dette er ikke et foto';
-    } else if($_FILES['pic']['size'] > 2048000) {
+    } else if($file_size > $maxsize) {
         $errors['photo'] = ' - Billedefilen  er for stor';
     } else if($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png' && $imageFileType != 'gif') {
         $errors['photo'] = ' - Kun filer af typen JPG, GIF eller PNG er tilladt';
     }
+}
+
+    $kategorier = find_all_categories();
+
 
 if(empty($errors)) {
        // echo $cat;
