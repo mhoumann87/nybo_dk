@@ -156,8 +156,9 @@ header {
         -ms-flex-align: center;
             align-items: center;
     border-bottom: 3px #DF0000 solid;
-    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFE8), to(#0D0D0D));
-    background: linear-gradient(to bottom, #FFFFE8, #0D0D0D);
+    background-color: #C9C0BB;
+    background: -webkit-gradient(linear, left top, left bottom, from(#C9C0BB), to(#0D0D0D));
+    background: linear-gradient(to bottom, #C9C0BB, #0D0D0D);
     position: fixed;
     top: 0;
 }
@@ -438,8 +439,9 @@ footer {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: -webkit-gradient(linear, left top, left bottom, from(#0D0D0D), to(#FFFFE8));
-    background: linear-gradient(to bottom, #0D0D0D, #FFFFE8);
+    background-color: #C9C0BB;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0D0D0D), to(#C9C0BB));
+    background: linear-gradient(to bottom, #0D0D0D, #C9C0BB);
     border-top: 3px solid #DF0000;
 }
 

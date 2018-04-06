@@ -4,6 +4,7 @@
     --headline: #DF0000;
     --success: #137506;
     --opeq_red: rgba(223, 0, 0, 0.5);
+    --silver: #C9C0BB;
 }
 
 @custom-selector :--headings  h1, h2, h3, h4, h5, h6;

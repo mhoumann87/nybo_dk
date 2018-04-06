@@ -8,7 +8,8 @@ header {
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px var(--headline) solid;
-    background: linear-gradient(to bottom, var(--paragraph), var(--background));
+    background-color: var(--silver);
+    background: linear-gradient(to bottom, var(--silver), var(--background));
     position: fixed;
     top: 0;
 }

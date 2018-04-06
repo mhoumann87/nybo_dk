@@ -3,7 +3,8 @@ footer {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom, var(--background), var(--paragraph));
+    background-color: var(--silver);
+    background: linear-gradient(to bottom, var(--background), var(--silver));
     border-top: 3px solid var(--headline);
 }
 
