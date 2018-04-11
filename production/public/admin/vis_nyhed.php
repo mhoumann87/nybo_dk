@@ -2,7 +2,7 @@
 require_once ('./../../private/initialize.inc.php');
 require_login();
 
-$side = 'nyhed';
+$side = 'vis_nyhed';
 $title = 'Theis Nybo Foto - Vis Nyheder';
 
 require_once (SHARED_PATH.'/admin_header.inc.php');

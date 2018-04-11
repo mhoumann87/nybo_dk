@@ -2,7 +2,7 @@
 require_once ('./../../private/initialize.inc.php');
 require_login();
 
-$side = 'foto';
+$side = 'index';
 $title = 'Theis Nybo Foto - Upload billede';
 
 
@@ -24,6 +24,29 @@ if(empty($_FILES['pic']['name'])) {
 } else if($_FILES['pic']['error'] === 2) {
     $errors['photo']  = ' - Billed filen er for stor, den må max være '.ini_get('upload_max_filesize').'B';
 } else {
+
+    $changed_name = check_name($_FILES['pic']);
+    if($changed_name != $_FILES['pic']['name']) {
+        $_FILES['pic']['name'] = $changed_name;
+    };
+
+    $target_file = $target_dir . basename($_FILES["pic"]["name"]);
+
+    if(file_exists($target_file)) {
+        $index = 1;
+        $files = scandir($target_dir);
+        print_r($files);
+
+        do {
+
+            $parts = pathinfo($target_file);
+            $ext = $parts['extension'];
+            $part_name = $parts['filename'];
+            $_FILES['pic']['name'] = $part_name.'_'.$index++.'.'.$ext;
+
+        } while(in_array($_FILES['pic']['name'], $files));
+    }
+
     $filename = basename($_FILES["pic"]["name"]);
     $target_file = $target_dir . basename($_FILES["pic"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

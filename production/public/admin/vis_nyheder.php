@@ -2,14 +2,13 @@
 require_once ('./../../private/initialize.inc.php');
 require_login();
 
-$side = 'nyhed';
+$side = 'vis_nyhed';
 $title = 'Theis Nybo Foto - Vis Nyheder';
 
 require_once (SHARED_PATH.'/admin_header.inc.php');
 
 if(is_get_request()) {
 
-    var_dump($_GET);
     if (isset($_GET['cat'])) {
 
         $news = find_news_by_cat(trim(clean_input($db, $_GET['cat'])));
@@ -42,11 +41,11 @@ if(is_get_request()) {
 
             <div class="sidebar_menu">
 
-                <div><a href="<?php echo url_for('/admin/vis_nyheder.php');?>">Alle Nyheder</div>
+                <div class="sidebar_nav-item"><a href="<?php echo url_for('/admin/vis_nyheder.php');?>">Alle Nyheder</div>
                 <?php $categories = find_all_news_categories();
                 if($categories) {
                     while($category = mysqli_fetch_assoc($categories)) { ?>
-                        <div class="sb_menu_item"><a href="<?php echo url_for('/admin/vis_nyheder.php?cat='.h($category['newskat_id']).'')?>"><?php echo h(ucfirst($category['newskat_navn'])); ?></a> </div>
+                        <div class="sidebar_nav-item"><a href="<?php echo url_for('/admin/vis_nyheder.php?cat='.h($category['newskat_id']).'')?>"><?php echo h(ucfirst($category['newskat_navn'])); ?></a> </div>
 
                         <?php
                     }

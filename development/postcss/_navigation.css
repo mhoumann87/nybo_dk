@@ -107,10 +107,18 @@
 .sidebar_nav {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     padding: 0.6rem;
 }
+
+@media screen and (min-width: 700px) {
+
+    .sidebar_nav {
+        flex-direction: row;
+    }
+}
+
 
 .velkommen {
     width: 25%;
@@ -122,12 +130,13 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
-.sb_menu_item {
-    padding: 0 1rem;
+.sidebar_nav-item {
+    padding: .5rem;
+    margin-right: 0.5rem;
 }
-
 @supports (grid-area: auto) {
 
     @media screen and (min-width: 50rem) {

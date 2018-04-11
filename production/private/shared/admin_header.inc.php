@@ -28,7 +28,9 @@
             <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
             <div id="show" class="menubar noshow">
                 <div class="menu-item <?php echo ($side == 'index') ? 'active' : ' '; ?>"><a href="<?php echo url_for('/admin/index.php'); ?>">Upload Foto</a></div>
+                <div class="menu-item <?php echo ($side == 'vis_foto') ? 'active' : ' '; ?>"><a href="<?php echo url_for('/admin/vis_billeder.php'); ?>">Vis Billeder</a></div>
                 <div class="menu-item <?php echo ($side == 'nyhed') ? ' active' : ' '; ?>"><a href="<?php echo url_for('/admin/skriv_nyhed.php'); ?>">Skriv Nyhed</a></div>
+                <div class="menu-item <?php echo ($side == 'vis_nyhed') ? 'active' : ' '; ?>"><a href="<?php echo url_for('/admin/vis_nyheder.php'); ?>">Vis Nyheder</a></div>
                 <div class="menu-item <?php echo ($side == 'bruger') ? 'active' : ' '; ?>"><a href="<?php echo url_for('/admin/opret_bruger'); ?>">Opret Bruger</a></div>
                 <div class="menu-item <?php echo ($side == 'kontakt') ? ' active' : ' '; ?>"><a href="<?php echo url_for('/admin/logout.php'); ?>">Logout</a></div>
             </div>

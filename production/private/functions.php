@@ -78,4 +78,19 @@ function convert_to_bytes($size) {
     return $size;
 }
 
+// Remove spaces in photonames
+function check_name($file) {
+
+    $new_name = null;
+    $nospaces = str_replace(' ', '_', $file['name']);
+
+    if($nospaces != $file['name']) {
+        $new_name = $nospaces;
+    } else {
+        $new_name = $file['name'];
+    }
+    return $new_name;
+}
+
+
 
