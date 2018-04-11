@@ -57,12 +57,15 @@ if (isset($_GET['id'])) {
 
         </nav>
 
+
+
         <section class="login_box">
 
-            <h3 class="space">Slet Billede</h3>
+            <h3 class="space-under">Slet Billede</h3>
 
-            <div class="content-box">
+            <div class="del-photo-box">
             <h4 class="space">Vil du slette dette billede?</h4>
+
 
             <img src="<?php echo $photo['billede_link']; ?>" class="<?php echo $photo_class ?? ''; ?>" alt="<?php echo $photo['billede_navn'] ?? ''; ?>">
                 <h5><?php echo h($photo['billede_titel']); ?></h5>

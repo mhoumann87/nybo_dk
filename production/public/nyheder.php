@@ -130,7 +130,7 @@ require_once('./../private/shared/header.inc.php');
                             if(strlen($news['news_text']) > 350) {
                               $text = substr($news['news_text'], 0, 300).'...<a href="'.url_for('/nyhed.php?id=').''.$news['newskat_id'].'&newsid='.$news['news_id'].'">læs mere</a>';
                             } else {
-                                $text = 'kort';
+                                $text = $news['news_text'];
                             }
 
                             echo '<article class="newsside_newsbox">';

@@ -64,26 +64,36 @@ if (isset($_GET['id'])) {
 
         </nav>
 
-        <section class="login_box">
+        <h3 class="side-titel space-under">Slet Nyhed</h3>
 
-            <h3 class="space-under">Slet Nyhed</h3>
+        <section class="en-nyhed-box">
 
-            <div class="content-box box-space">
-                <h4 class="space-under">Vil du slette denne nyhed?</h4>
-                <img src="<?php echo $img['newsImg_link']; ?>" class="<?php echo $photo_class ?? ''; ?>" alt="<?php echo $img['newsImg_navn'] ?? ''; ?>">
+            <div class="vis-nyheder">
+                <div class="slet-nyhed-head">
+                <h4>Vil du slette denne nyhed?</h4>
+                </div>
+
+                <div class="nyhed-head">
                 <h5><?php echo h($news['news_overskrift']); ?></h5>
-                <p><?php echo $news['news_text'] ?></p>
-            </div>
+                </div>
 
+                <div class="nyhed-foto">
+                <img src="<?php echo $img['newsImg_link']; ?>" class="<?php echo $photo_class ?? ''; ?>" alt="<?php echo $img['newsImg_navn'] ?? ''; ?>">
+                </div>
+
+                <div class="nyhed-text">
+                <p><?php echo $news['news_text'] ?></p>
+                </div>
+
+                <div class="store-knapper">
             <form class="form_buttons" name="submit" action="<?php echo url_for('/admin/slet_nyhed.php');?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $news['news_id']; ?>">
                 <input type="hidden" name="filename" value="<?php echo $img['newsImg_navn']; ?>">
                 <input class="del_button" type="submit" name="delete" value="Slet Nyhed">
                 <input class="loginknap" type="submit" name="clear" value="Fortryd">
             </form>
-            <a href="<?php echo url_for('/admin/ret_nyhed.php?id='.$id.'')?>">Ret Nyhed</a>
-            <p class="error"><?php echo $msg ?? ''; ?></p>
-
+                </div>
+            </div>
         </section>
 
     </main>

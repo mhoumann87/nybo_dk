@@ -1568,6 +1568,31 @@ main {
     padding: 0.5rem;
 }
 
+.del-photo-box {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.del-photo-box img {
+    margin: 0 auto 16px auto;
+    margin: 0 auto 1rem auto;
+}
+
+.del-photo-box h5 {
+    text-align: center;
+    margin-bottom: 32px;
+    margin-bottom: 2rem;
+}
+
 @supports (grid-area: auto) {
 
     @media screen and (min-width: 37.500rem) {
@@ -1604,5 +1629,166 @@ main {
             grid-template-columns: repeat(6, 1fr);
         }
     }
+}
+
+.vis-nyheder-box {
+    width: 100%;
+    padding: 8px;
+    padding: 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: baseline;
+        -ms-flex-pack: baseline;
+            justify-content: baseline;
+    max-width: 800px;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.vis-nyheder {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 32px;
+    margin-bottom: 2rem;
+    border: 1px solid #DF0000;
+}
+
+.nyhed-head {
+    background-color: #DF0000;
+    padding: 8px;
+    padding: 0.5rem
+}
+
+.nyhed-head h5 {
+    color: #0D0D0D;
+}
+
+.nyhed-foto {
+    margin-bottom: 32px;
+    margin-bottom: 2rem;
+}
+
+.nyhed-foto img{
+    margin: 0 auto;
+}
+
+.nyhed-info {
+    padding: 8px;
+    padding: 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 32px;
+    margin-bottom: 2rem;
+}
+
+.nyhed-text {
+    padding: 8px;
+    padding: 0.5rem;
+    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
+}
+
+.nyhed-slet {
+    padding: 8px;
+    padding: 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.en-nyhed-box {
+    width: 100%;
+    padding: 8px;
+    padding: 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    /*align-items: center;*/
+    -webkit-box-pack: baseline;
+        -ms-flex-pack: baseline;
+            justify-content: baseline;
+    max-width: 800px;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.slet-nyhed-head {
+    padding: 8px;
+    padding: 0.5rem;
+    margin-bottom: 16px;
+    margin-bottom: 1rem;
+}
+
+.store-knapper {
+    padding: 8px;
+    padding: 0.5rem;
+}
+
+@supports (grid-area: auto) {
+
+    @media screen and (min-width: 40.625em) {
+
+        .vis-nyheder-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            grid-gap: 1rem;
+            -webkit-box-align: stretch;
+                -ms-flex-align: stretch;
+                    align-items: stretch;
+            max-width: 100%;
+        }
+
+        .vis-nyheder {
+            margin-bottom: 0;
+        }
+    }
+
+    @media screen and (min-width: 56.250rem) {
+
+        .vis-nyheder-box {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media screen and (min-width: 75.000rem) {
+
+        .vis-nyheder-box {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @media screen and (min-width: 112.500rem) {
+
+        .vis-nyheder-box {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+
 }
 /*# sourceMappingURL=style.css.map */
