@@ -140,7 +140,7 @@ header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 100vw;
+    width: 100%;
     padding: 10px;
     margin: 0;
     -webkit-box-orient: horizontal;
