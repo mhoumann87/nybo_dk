@@ -15,7 +15,7 @@ require_once('./../private/shared/header.inc.php');
 
             <?php
 
-            $sql = "SELECT * FROM billeder ORDER BY billede_upload DESC LIMIT 8";
+            $sql = "SELECT * FROM billeder ORDER BY billede_upload DESC LIMIT 10";
             $result = mysqli_query($db, $sql);
             confirm_result_set($result);
 
@@ -34,7 +34,7 @@ require_once('./../private/shared/header.inc.php');
                 ?>
                 <article class="photo-card">
 
-                    <a href="<?php echo $photo['billede_link'] ?? '';?>" data-lightbox="photo"><img src="<?php echo $photo['billede_link'] ?? '';?>" class="space-under <?php echo $photo_class ?? '';?>" alt="<?php echo $photo['photo_title'] ?? '';?>"></a>
+                    <a href="<?php echo $photo['billede_link'] ?? '';?>" data-lightbox="photo" target="_blank"><img src="<?php echo $photo['billede_link'] ?? '';?>" class="space-under <?php echo $photo_class ?? '';?>" alt="<?php echo $photo['photo_title'] ?? '';?>"></a>
                     <h3 class="space-under"><?php echo h($photo['billede_titel']) ?? '';?></h3>
                     <p>Kategori : <a href="<?php echo url_for('/foto.php?id='.$photo['kategori_id'].'');?>"><?php echo $cat ?? ''; ?></a></p>
 
