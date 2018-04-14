@@ -13,7 +13,8 @@ const   gulp = require('gulp'),
         jsSources = [
             source + 'javascript/onLoad.js',
             source + 'javascript/menubar.js',
-            source + 'javascript/contact.js'
+            source + 'javascript/contact.js',
+            source + 'javascript/lightbox.js'
         ];
 
 gulp.task('js', function() {

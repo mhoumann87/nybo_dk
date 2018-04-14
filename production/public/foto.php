@@ -24,7 +24,7 @@ if(is_get_request()) {
 
                 echo '<nav>';
                 echo '<div class="side-nav">';
-                echo '<div class="side_nav_item"><a href="' . url_for('/foto.php/') . '">Alle Billeder</div>';
+                echo '<div class="side_nav_item"><a href="' . url_for('/foto.php') . '">Alle Billeder</div>';
 
             $kategori = find_all_categories();
 
@@ -69,8 +69,8 @@ while($billede = mysqli_fetch_assoc($billeder)) {
 
     echo '<article class="fotoside_fotobox">';
 
-    echo '<div class="foto_fill"><img src="'.$billede['billede_link'].'" class="'.$photo_class.'" alt="'.$billede['billede_titel'].'"></div>';
-    echo '<div class="foto_caption"><h3>'.$billede['billede_titel'].'</h3></div>';
+    echo '<a href="'.$billede['billede_link'].'" data-lightbox="photo" data-title="'.$billede['billede_titel'].'"><img src="'.$billede['billede_link'].'" class="'.$photo_class.'" alt="'.$billede['billede_titel'].'"></a>';
+    //echo '<div class="foto_caption"><h3>'.$billede['billede_titel'].'</h3></div>';
 
     echo '</article>';
 }
@@ -80,7 +80,7 @@ while($billede = mysqli_fetch_assoc($billeder)) {
 
             echo '<nav>';
             echo '<div class="side-nav">';
-            echo '<div class="side_nav_item"><a class="active" href="' . url_for('/foto.php/') . '">Alle Billeder</div>';
+            echo '<div class="side_nav_item"><a class="active" href="' . url_for('/foto.php') . '">Alle Billeder</div>';
 
             $kategori = find_all_categories();
 
@@ -114,8 +114,8 @@ while($billede = mysqli_fetch_assoc($billeder)) {
 
     echo '<article class="fotoside_fotobox">';
 
-    echo '<div class="foto_fill"><img src="'.$billede['billede_link'].'" class="'.$photo_class.'" alt="'.$billede['billede_titel'].'"></div>';
-    echo '<div class="foto_caption"><h3>'.$billede['billede_titel'].'</h3></div>';
+    echo '<a href="'.$billede['billede_link'].'" data-lightbox="all"><img src="'.$billede['billede_link'].'" class="'.$photo_class.'" alt="'.$billede['billede_titel'].'"></a>';
+
 
     echo '</article>';
 }

@@ -34,7 +34,7 @@ require_once('./../private/shared/header.inc.php');
                 ?>
                 <article class="photo-card">
 
-                    <img src="<?php echo $photo['billede_link'] ?? '';?>" class="space-under <?php echo $photo_class ?? '';?>" alt="<?php echo $photo['photo_title'] ?? '';?>">
+                    <a href="<?php echo $photo['billede_link'] ?? '';?>" data-lightbox="photo"><img src="<?php echo $photo['billede_link'] ?? '';?>" class="space-under <?php echo $photo_class ?? '';?>" alt="<?php echo $photo['photo_title'] ?? '';?>"></a>
                     <h3 class="space-under"><?php echo h($photo['billede_titel']) ?? '';?></h3>
                     <p>Kategori : <a href="<?php echo url_for('/foto.php?id='.$photo['kategori_id'].'');?>"><?php echo $cat ?? ''; ?></a></p>
 
