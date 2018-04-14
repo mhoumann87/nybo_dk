@@ -24,7 +24,7 @@ require_once('./../private/shared/header.inc.php');
 
                             echo '<nav>';
                             echo '<div class="side-nav">';
-                            echo '<div class="side_nav_item"><a href="' . url_for('/nyheder.php/') . '">Alle Nyheder</div>';
+                            echo '<div class="side_nav_item"><a href="' . url_for('/nyheder.php') . '">Alle Nyheder</div>';
 
                             $kategori = find_all_news_categories();
 
@@ -91,7 +91,7 @@ require_once('./../private/shared/header.inc.php');
 
                         echo '<nav>';
                         echo '<div class="side-nav">';
-                        echo '<div class="side_nav_item"><a class="active" href="' . url_for('/nyheder.php/') . '">Alle Nyheder</div>';
+                        echo '<div class="side_nav_item"><a class="active" href="' . url_for('/nyheder.php') . '">Alle Nyheder</div>';
 
                         $kategori = find_all_news_categories();
 

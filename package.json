@@ -1,6 +1,6 @@
 {
   "name": "nybo_php",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "Website for a photographer",
   "main": "index.js",
   "scripts": {
