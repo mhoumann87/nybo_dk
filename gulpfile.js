@@ -24,7 +24,7 @@ gulp.task('js', function() {
        .pipe(babel({
            presets: ['es2015']
        }))
-       //.pipe(uglify())
+       .pipe(uglify())
        .on('error', gutil.log)
        .pipe(gulp.dest(dest + 'javascript/'))
 });
